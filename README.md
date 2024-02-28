@@ -1,5 +1,4 @@
 # Feature Characterization
-## Information
 The algoritm is based on the definitions in ISO 21920-2.
 With appropriate permissions, the iso can be viewed here: https://nautos.de/3PI/search/item-detail/DE30091970
 
@@ -10,20 +9,23 @@ In the following are some illustrations to show idea of watershed segemenation. 
 
 ### Method to determine watersheds in 2.5D data set
 <div align="center">
-<img width="720" src="figures/animation.mp4" />
+<img width="720" src="data/figures for readme/animation.mp4" />
   <!-- <video src="figures/animation.mp4" width="400" /> -->
 </div>
 
 ### Method transferred to 2D data set
 <div align="center">
-<img width="720" src="figures/animation.gif" />
+<img width="720" src="data/figures for readme/animation.gif" />
 </div>
 
 ## Usage of feature characterization
-For now see minimal_example.m
 The Convention is summarized in the following figure:
 <div align="center">
-<img width="720" src="figures/FC_Convention.png" />
+<img width="720" src="data/figures for readme/FC_Convention.png" />
+</div>
+The functionality can be tested directly using minimal_example.m with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profles for case studies" can be loaded and the algorithm applied by varying the various input arguments.
+<div align="center">
+<img width="720" src="data/figures for readme/GUI.png" />
 </div>
 
 ## Preliminaries Matlab
