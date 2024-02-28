@@ -37,10 +37,28 @@ to permanently save the path
 ```
 save path
 ```
-##### Requirements
+##### Version
 - MATLAB 2017a and higher
 
 ## Preliminaries python
 
-##### Requirements
-python 3.x
+Prepare virtual environment and install package and other requirements, if needed (matplotlib, jupyter notebook).
+
+**Windows**
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install python\.
+pip install python\requirements.txt
+```
+
+**Unix**
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install python/.
+pip install -r python/requirements.txt
+```
+
+##### Version
+python>=3.11
