@@ -42,7 +42,7 @@ save path
 
 ## Preliminaries python
 
-Prepare virtual environment and install package and other requirements, if needed (matplotlib, jupyter notebook).
+Prepare virtual environment, install package and requirements for `matplotlib` \& `jupyter notebook`.
 
 **Windows**
 ```bash
