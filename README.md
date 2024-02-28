@@ -9,8 +9,7 @@ In the following are some illustrations to show idea of watershed segemenation. 
 
 ### Method to determine watersheds in 2.5D data set
 <div align="center">
-<img width="720" src="data/figures for readme/animation.mp4" />
-  <!-- <video src="figures/animation.mp4" width="400" /> -->
+<video controls src="data/figures for readme/animation.mp4"></video>
 </div>
 
 ### Method transferred to 2D data set
