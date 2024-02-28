@@ -1,0 +1,22 @@
+[build-system]
+requires = [
+    "setuptools>=68.0.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "featurecharacterization2d"
+version = "1.0.0"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    'importlib-metadata; python_version<"3.8"',
+    'numpy>=1.26.0'
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
