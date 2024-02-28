@@ -1,15 +1,4 @@
 # Feature Characterization
-## Preliminaries
-Add "FC_Functions"-folder to search path of Matlab
-```
-addpath(*path to FC_Functions*)
-```
-to permanently save the path
-```
-save path
-```
-
-
 ## Information
 The algoritm is based on the definitions in ISO 21920-2.
 With appropriate permissions, the iso can be viewed here: https://nautos.de/3PI/search/item-detail/DE30091970
@@ -37,5 +26,19 @@ The Convention is summarized in the following figure:
 <img width="720" src="figures/FC_Convention.png" />
 </div>
 
-## Requirements
+## Preliminaries Matlab
+Add "FC_Functions"-folder to search path of Matlab
+```
+addpath(*path to FC_Functions*)
+```
+to permanently save the path
+```
+save path
+```
+##### Requirements
 - MATLAB 2017a and higher
+
+## Preliminaries python
+
+##### Requirements
+python 3.x
