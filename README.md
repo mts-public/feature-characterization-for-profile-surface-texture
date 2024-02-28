@@ -49,7 +49,7 @@ Prepare virtual environment, install package and requirements for `matplotlib` \
 python -m venv venv
 venv\Scripts\activate
 pip install python\.
-pip install python\requirements.txt
+pip install -r python\requirements.txt
 ```
 
 **Unix**
