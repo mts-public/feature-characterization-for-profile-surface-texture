@@ -6,5 +6,7 @@ from .parameter import feature_parameter
 
 __all__ = [
     "Watershed",
-    "FeatureAttribute"
+    "FeatureAttribute",
+    "feature_characterization",
+    "feature_parameter",
     ]
