@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+
 import unittest
+
 import numpy as np
 from scipy.io import loadmat
-from featurecharacterization2d import Watershed
 from featurecharacterization2d import feature_characterization
 
 
@@ -14,11 +15,15 @@ class TestFC(unittest.TestCase):
         self.dx = 0.5
 
     def test_wolfprune3(self):
-        xFC,M = feature_characterization(self.z, self.dx, "D", "Wolfprune 3", "All",  "HDh", "Mean")
+        xFC, _ = feature_characterization(self.z, self.dx, "D", "Wolfprune 3", "All",  "HDh", "Mean")
+
+        # Verfy with matlab solutions
         self.assertAlmostEqual(xFC, 4.312365774565255)
         
     def test_Volume1(self):
-        xFC,M = feature_characterization(self.z, self.dx, "D", "VolS 1", "All",  "HDh", "Mean")
+        xFC, _ = feature_characterization(self.z, self.dx, "D", "VolS 1", "All",  "HDh", "Mean")
+
+        # Verfy with matlab solutions
         self.assertAlmostEqual(xFC, 27.938628855042230)
 
 
