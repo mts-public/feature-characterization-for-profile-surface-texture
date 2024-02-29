@@ -1,33 +1,49 @@
 import numpy as np
+
 from .watershed import Watershed
 from .parameter import feature_parameter
 
-def feature_characterization(z = None,dx = None,FT = None,pruning = None,significant = None,AT = None,stats = None): 
-# INPUTS:
-#   z           - vertical profile values
-#   dx          - step size in x-direction
-#   FT          - 'D', 'V', 'H', 'P'
-#   pruning     - 'None', 'Wolfprune TH/X#', 'Width TH/X#', 'VolS TH', 'DevLength TH'
-#                 Threshold TH in units of corresponding attribute.
-#                 For Wolfprune or Width, the threshold value can also be
-#                 specified as a percentage. In this case, X# of Rz is used
-#                 as the threshold in the case of Wolfprune and X# of Le in
-#                 the case of Width.
-#   significant - 'All', 'Closed c', 'Open c', 'Bot N', 'Top N'
-#                 c can be an absolute value in µm or if the value is given
-#                 as a percentage it is interpreted as a material ratio
-#                 from which the height is then determined.
-#                 N specifies the number of top or bot values.
-#   AT          - 'HDh', 'HDv', 'HDw', 'HDl', 'PVh', 'Curvature', 'Count'
-#   stats       - 'Mean', 'Max', 'Min', 'StdDev', 'Perc X', 'Hist X', 'Sum', 'Density'
-#                 for "Hist", x specifies the number of bins in the histogram.
-#                 for "Perc", x specifies the threshold in the units of the
-#                 corresponding attribute
-# OUTPUTS:
-#   xFC         - parameter based on feature characterization
-#   M           - structured array of motifs
-#   meta        - meta data for further processing (e.g. plotting)
-    
+
+def feature_characterization(z = None, dx = None, FT = None, pruning = None, significant = None, AT = None, stats = None): 
+    """
+    Parameters
+    ----------
+        z : nd.array, float
+            vertical profile values
+        dx : float
+            step size in x-direction
+        FT : str
+            feature type: {'D', 'V', 'H', 'P'}
+        pruning : str
+            'None', 'Wolfprune TH/X#', 'Width TH/X#', 'VolS TH', 'DevLength TH'
+            Threshold TH in units of corresponding attribute.
+            For Wolfprune or Width, the threshold value can also be
+            specified as a percentage. In this case, X# of Rz is used
+            as the threshold in the case of Wolfprune and X# of Le in
+            the case of Width.
+        significant : str
+            All', 'Closed c', 'Open c', 'Bot N', 'Top N'
+            c can be an absolute value in µm or if the value is given
+            as a percentage it is interpreted as a material ratio
+            from which the height is then determined.
+            N specifies the number of top or bot values.
+        AT : str
+            attribute type {'HDh', 'HDv', 'HDw', 'HDl', 'PVh', 'Curvature', 'Count'}
+        stats : str
+            'Mean', 'Max', 'Min', 'StdDev', 'Perc X', 'Hist X', 'Sum', 'Density'
+            for "Hist", x specifies the number of bins in the histogram.
+            for "Perc", x specifies the threshold in the units of the
+            corresponding attribute
+    Returns
+    -------
+        xFC : np.ndarray, float
+            parameter based on feature characterization
+        M : Motif
+            structured array of motifs
+        meta :
+            meta data for further processing (e.g. plotting)
+    """
+
     ## parse pruning
     pruning = pruning.replace('%',' %')
     str = pruning.split(' ')
