@@ -43,15 +43,8 @@ save path
 
 Install `featurecharacterization2d` package.
 
-**Windows**
 ```bash
-cd python\
-pip install .
-```
-
-**Unix**
-```bash
-cd pyhton/
+cd pyhton
 pip install .
 ```
 
