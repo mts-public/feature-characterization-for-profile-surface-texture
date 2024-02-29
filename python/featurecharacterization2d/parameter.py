@@ -1,7 +1,8 @@
 import numpy as np
 from .attribute import FeatureAttribute
 
-def feature_parameter(z = None,dx = None,M = None,Fsig = None,NIsig = None,AT = None,Astats = None,xstats = None): 
+
+def feature_parameter(z = None, dx = None, M = None, Fsig = None, NIsig = None, AT = None, Astats = None, xstats = None): 
     ## step 4: determine significant_features
     I_Nsig = []
     match Fsig:
