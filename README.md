@@ -41,23 +41,24 @@ save path
 
 ## Preliminaries python
 
-Prepare virtual environment, install package and requirements for `matplotlib` \& `jupyter notebook`.
+Install `featurecharacterization2d` package.
 
 **Windows**
 ```bash
-python -m venv venv
-venv\Scripts\activate
-pip install python\.
-pip install -r python\requirements.txt
+cd python\
+pip install .
 ```
 
 **Unix**
 ```bash
-python -m venv venv
-source venv/bin/activate
-pip install python/.
-pip install -r python/requirements.txt
+cd pyhton/
+pip install .
+```
+
+Additional dependencies for development and plotting (`scipy`, `matplotlib`, `jupyter notebook`) are installed by 
+```bash
+pip install .[extra]
 ```
 
 ##### Version
-python>=3.11
+- python>=3.11
