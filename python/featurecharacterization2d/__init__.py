@@ -1,7 +1,10 @@
 from .watershed import Watershed
-from .feature_attribute import FeatureAttribute
+from .attribute import FeatureAttribute
+from .characterization import feature_characterization
+from .parameter import feature_parameter
+
 
 __all__ = [
     "Watershed",
     "FeatureAttribute"
-]
+    ]

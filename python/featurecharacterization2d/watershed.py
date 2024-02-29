@@ -2,7 +2,7 @@ from copy import deepcopy
 import numpy as np
 
 from .motif import Motif
-from .feature_attribute import FeatureAttribute
+from .attribute import FeatureAttribute
 
 
 class Watershed(object):
@@ -22,7 +22,10 @@ class Watershed(object):
                 threshold for pruning (not needed if PT = 'None').
         """
 
-        self.z = z
+        if z.ndim ==2:
+            self.z = z.reshape(-1,)
+        else:
+            self.z = z
         self.dx = dx
         self.FT = FT
         self.PT = PT
@@ -87,7 +90,7 @@ class Watershed(object):
         # step 3: pruning (see pruning cases in readme.md)
 
         # skip pruning if pruning type (PT) is "None"
-        if self.PT is not None:
+        if (self.PT is not None) and (self.PT != "None"):
             # determine attribute-values of each motif
             ATTR = FeatureAttribute.compute(z, self.dx, M, self.PT)
             # find optimal limit for maximum periodicity (if requested)
