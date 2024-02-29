@@ -51,6 +51,7 @@ class FeatureAttribute(object):
             case "Count":
                 ATTR = np.ones(I_sig.size)
         return ATTR
+
     @staticmethod
     def HDvf(z, dx, Mr):
         # all heightintersections incl. low-peak
@@ -83,6 +84,7 @@ class FeatureAttribute(object):
             i = i + 2
         HDv = A / (len(z) * dx)
         return HDv
+
     @staticmethod
     def HDlf(z, dx, Mr):
         zlp = z[Mr.ilp.astype(int)]
@@ -95,6 +97,7 @@ class FeatureAttribute(object):
             sum(np.sqrt(1.0 + (np.diff(zf) / dx) ** 2)) + np.mod(Mr.ilp + 1.0, 1)
         ) * dx + np.sqrt((ihi_end - i2) ** 2 * dx**2 + (zlp - z[i2]) ** 2)
         return HDl
+
     @staticmethod
     def curvature(z, dx, ix):
         if np.mod(ix, 1) != 0:
