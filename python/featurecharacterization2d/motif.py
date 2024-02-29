@@ -51,11 +51,11 @@ class Motif:
     def __len__(self) -> int:
         return self.size
 
-    def __delitem__(self, index: Union[list, int, np.ndarray, np.int_]) -> None:
+    def __delitem__(self, index: Union[list, int, np.ndarray, np.integer]) -> None:
         """
         Removes motifs by index.
         """
-        if isinstance(index, list) or isinstance(index, np.ndarray):
+        if isinstance(index, (list, np.ndarray)):
             self.size -= len(index)
             for id in index:
                 del self.ihi[id]
@@ -72,7 +72,7 @@ class Motif:
         """
         Returns a single motif or multiple motifs by index.
         """
-        if isinstance(index, int) or isinstance(index, np.int_):
+        if isinstance(index, (int, np.integer)):
             motif_object = Motif()
             values = {
                 "iv": self.iv[index],
