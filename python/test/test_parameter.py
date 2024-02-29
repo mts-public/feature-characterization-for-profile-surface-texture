@@ -10,7 +10,7 @@ from featurecharacterization2d import feature_characterization
 class TestFC(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
-        self.z = loadmat('data\profiles for case studies\Bu_1_56_ak.mat')['z']
+        self.z = loadmat('data\profiles\Bu_1_56_ak.mat')['z']
         self.z = self.z - np.mean(self.z)
         self.dx = 0.5
 
