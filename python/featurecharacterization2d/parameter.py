@@ -34,15 +34,15 @@ def feature_parameter(z = None,dx = None,M = None,Fsig = None,NIsig = None,AT = 
     ## step 6: attribute statistics
     match Astats:
         case 'Mean':
-            xFC = mean(ATTR)
+            xFC = np.mean(ATTR)
         case 'Max':
             xFC = np.amax(ATTR)
         case 'Min':
             xFC = np.amin(ATTR)
         case 'StdDev':
-            xFC = std(ATTR)
+            xFC = np.std(ATTR)
         case 'Perc':
-            xFC = sum(ATTR > xstats) / nMsig
+            xFC = np.sum(ATTR > xstats) / nMsig
         case 'Hist':
             xFC = histogram(ATTR,xstats)
         case 'Sum':

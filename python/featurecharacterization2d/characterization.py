@@ -1,5 +1,6 @@
 import numpy as np
 from .watershed import Watershed
+from .parameter import feature_parameter
 
 def feature_characterization(z = None,dx = None,FT = None,pruning = None,significant = None,AT = None,stats = None): 
 # INPUTS:
@@ -67,7 +68,7 @@ def feature_characterization(z = None,dx = None,FT = None,pruning = None,signifi
         
     watershed = Watershed(z,dx,FT,PT,TH)
     M = watershed.motifs()
-    xFC,M,ATTR = feature_parameter(z,dx,M, Fsig, NIsig, AT, Astats, vstats)
-    meta = struct('ATTR',ATTR,'nM',len(M),'PT',PT,'TH',TH,'Fsig',Fsig,'NIsig',NIsig,'AT',AT,'Astats',Astats,'vstats',vstats)
-
-    return xFC,M,meta
+    xFC,M,ATTR,_,_ = feature_parameter(z,dx,M, Fsig, NIsig, AT, Astats, vstats)
+    # meta = struct('ATTR',ATTR,'nM',len(M),'PT',PT,'TH',TH,'Fsig',Fsig,'NIsig',NIsig,'AT',AT,'Astats',Astats,'vstats',vstats)
+    # return xFC,M,meta
+    return xFC,M
