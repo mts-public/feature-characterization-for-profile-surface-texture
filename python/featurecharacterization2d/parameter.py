@@ -19,7 +19,7 @@ def feature_parameter(z = None, dx = None, M = None, Fsig = None, NIsig = None, 
                 I_Nsig = find(FTI * zlp < np.logical_or(FTI * NIsig,FTI * zv) > FTI * NIsig)
         case 'Top' | 'Bot':
             # determine attribute values
-            ATTR = feature_attribute(z,dx,M,'PVh')
+            ATTR = FeatureAttribute.compute(z, dx, M, 'PVh')
             # determine indices (I) of sorted zv-values in zv
             __,I_sort = __builtint__.sorted(ATTR,'descend')
             # case NIsig is higher than nM use nM
