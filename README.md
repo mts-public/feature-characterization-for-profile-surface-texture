@@ -27,8 +27,8 @@ The functionality can be tested directly using minimal_example.m with or "minima
 <img width="720" src="data/figures_for_readme/GUI.png" />
 </div>
 
-## Preliminaries Matlab
-Add "FC_Functions"-folder to search path of Matlab
+## Preliminaries MATLAB
+Add "featurecharacterization2d"-folder to search path of Matlab
 ```
 addpath(*path to featurecharacterization2d*)
 ```
@@ -39,7 +39,7 @@ save path
 ##### Version
 - MATLAB 2017a and higher
 
-## Preliminaries python
+## Preliminaries Python
 
 Install `featurecharacterization2d` package.
 
