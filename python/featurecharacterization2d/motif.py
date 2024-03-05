@@ -68,7 +68,7 @@ class Motif:
         self.sig = np.delete(self.sig, index)
         return None
 
-    def __getitem__(self, index: Union[list, int, np.int_, np.ndarray]):
+    def __getitem__(self, index: Union[list, int, np.ndarray, np.integer]):
         """
         Returns a single motif or multiple motifs by index.
         """
