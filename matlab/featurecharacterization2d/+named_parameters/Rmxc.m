@@ -1,4 +1,4 @@
-function [Rmvc,Rmpc] = Rmxc(z,dx,tree)
-Rmvc = sammtop_functions.feature_parameters.feature_based_parameters.feature_parameter(z, dx, tree, "V", "All", 1, "Curvature", "Mean");
-Rmpc = sammtop_functions.feature_parameters.feature_based_parameters.feature_parameter(z, dx, tree, "P", "All", 1, "Curvature", "Mean");
+function [Rmvc,Rmpc] = Rmxc(z,dx)
+Rmvc = feature_characterization(z, dx, "V", "Wolfprune 5 %", "All", "Curvature", "Mean");
+Rmpc = feature_characterization(z, dx, "P", "Wolfprune 5 %", "All", "Curvature", "Mean");
 end

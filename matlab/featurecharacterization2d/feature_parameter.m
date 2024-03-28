@@ -1,4 +1,4 @@
-function [xFC, M, ATTR, Fsig, NIsig] = feature_parameter(z, dx, M, Fsig, NIsig, AT, Astats, xstats)
+function [xFC, M, ATTR, Fsig, NIsig] = feature_parameter(z, dx, M, Fsig, NIsig, AT, Astats, vstats)
 %% step 4: determine significant_features
 I_Nsig = [];
 switch Fsig
@@ -42,9 +42,10 @@ switch Astats
     case "StdDev"
         xFC = std(ATTR);
     case "Perc"
-        xFC = sum(ATTR > xstats)/nMsig;
+        xFC = sum(ATTR > vstats)/nMsig;
     case "Hist"
-        xFC = histogram(ATTR, xstats);
+        figure
+        xFC = histogram(ATTR,length(ATTR));
     case "Sum"
         xFC = sum(ATTR);
     case "Density"

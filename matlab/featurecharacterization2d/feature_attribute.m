@@ -113,20 +113,3 @@ cx(n) = dz2/(1 + dz1^2)^(3/2);
 end
 cx=mean(cx);
 end
-
-% Herausforderung hier: wie umgehen mit den interpolierten indizes?
-% z.B. eine Plateau bestehend aus zwei Punkten 
-%% Curvature with spline
-function K = curvature_spline(z, dx, c, ik)
-i0 = floor(ik);
-ir = mod(ik, 1);
-% other coefficients
-di = (1/(3*dx))*(c(i0+1) - c(i0));
-bi = (z(i0+1) - z(i0))/dx - c(i0)*dx - di*dx^2;
-% first derivative
-d1 = bi+2*c(i0)*dx*ir+3*di*(dx*ir)^2;
-% second derivative
-d2 = 2*c(i0) + 6*di*dx*ir;
-% curvature
-K = d2 / (1 + d1^2)^(3/2);
-end
