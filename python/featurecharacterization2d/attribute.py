@@ -52,7 +52,8 @@ class FeatureAttribute(object):
                 ATTR = np.ones(I_sig.size)
         return ATTR
 
-    def HDvf(self, z, dx, Mr):
+    @staticmethod
+    def HDvf(z, dx, Mr):
         # all heightintersections incl. low-peak
         ihi = np.hstack([Mr.ilp, np.array(Mr.ihi[0])])
         zlp = z[Mr.ilp.astype(int)]
@@ -84,7 +85,8 @@ class FeatureAttribute(object):
         HDv = A / (len(z) * dx)
         return HDv
 
-    def HDlf(self, z, dx, Mr):
+    @staticmethod
+    def HDlf(z, dx, Mr):
         zlp = z[Mr.ilp.astype(int)]
         direction = np.sign(Mr.ihp - Mr.ilp)
         ihi_end = Mr.ihi[-1]
@@ -96,7 +98,8 @@ class FeatureAttribute(object):
         ) * dx + np.sqrt((ihi_end - i2) ** 2 * dx**2 + (zlp - z[i2]) ** 2)
         return HDl
 
-    def curvature(self, z, dx, ix):
+    @staticmethod
+    def curvature(z, dx, ix):
         if np.mod(ix, 1) != 0:
             ix = np.hstack([np.floor(ix), np.ceil(ix)]).astype(int)
         else:
