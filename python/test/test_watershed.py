@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-
 import unittest
-
 import numpy as np
 from featurecharacterization2d import Watershed
-
 
 class TestWatershedSegementation(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:

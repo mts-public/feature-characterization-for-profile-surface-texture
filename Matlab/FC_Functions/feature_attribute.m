@@ -38,13 +38,12 @@ end
 end
 
 function HDv = HDvf(z, dx, Mr)
-% all heightintersections incl. low-peak
 ihi = [Mr.ilp; Mr.ihi];
 zlp = z(floor(Mr.ilp));
 A = 0;i=1;
 dir = sign(Mr.ihp - Mr.ilp);
 while i < length(ihi)
-    i1 = abs(ceil(dir*ihi(i)));     % round toward pit of current area
+    i1 = abs(ceil(dir*ihi(i)));
     i2 = abs(floor(dir*ihi(i+1)));
     xf = [ihi(i); (i1:dir:i2)'; ihi(i+1)]*dx;
     zf = [zlp; z(i1:dir:i2); zlp];

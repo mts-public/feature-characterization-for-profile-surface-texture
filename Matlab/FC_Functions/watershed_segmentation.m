@@ -13,7 +13,6 @@ function M = watershed_segmentation(z, dx, FT, PT, TH)
 %         M.ihp   - (interpolated) index of high-peak
 %         M.ihi   - (interpolated) index of heightintersection
 %         M.sig   - indicator for significant features
-% meta  - stucture array with meta information
 
 %% step 1: determine indices of all peaks and pits
 % invert z-values if hill-motifs are searched. Allows the rest of the code

@@ -1,9 +1,10 @@
-function [xFC, M, ATTR, Fsig, NIsig] = feature_parameter(z, dx, M, Fsig, NIsig, AT, Astats, vstats)
+function [xFC, M, ATTR] = feature_parameter(z, dx, M,...
+                                           Fsig, NIsig, AT, Astats, vstats)
 %% step 4: determine significant_features
 I_Nsig = [];
 switch Fsig
     case {"Open", "Closed"}
-        % feature type indicator (FTI=-1 if hills/peaks, FTI=1 if dales/pits)
+        % feature type indicator (FTI=-1: hills/peaks, FTI=1: dales/pits)
         FTI = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));
         % determine z-values of low-peaks and pits
         zlp = z(floor([M.ilp]));
@@ -49,12 +50,6 @@ switch Astats
     case "Sum"
         xFC = sum(ATTR);
     case "Density"
-        xFC = ATTR/(dx*(length(z)-1));
-    case "Median"
-        xFC = median(ATTR);
-    case "Span"
-        xFC = max(ATTR) - min(ATTR);
-    case "RMS"  
-        xFC = rms(ATTR);
+        xFC = sum(ATTR)/(dx*length(z));
 end
 end
