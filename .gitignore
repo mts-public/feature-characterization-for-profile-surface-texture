@@ -147,5 +147,5 @@ dmypy.json
 .pyre/
 
 # Matlab app designer
-.mlapp
-.prj
+*.mlapp
+*.prj
