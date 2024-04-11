@@ -21,10 +21,22 @@ class TestFC(unittest.TestCase):
         self.assertAlmostEqual(xFC, 4.312365774565255)
         
     def test_Volume1(self):
-        xFC, _ = feature_characterization(self.z, self.dx, "D", "VolS 1", "All",  "HDh", "Mean")
+        xFC, _ = feature_characterization(self.z, self.dx, "D", "VolS 1", "All", "HDh", "Mean")
 
         # Verfy with matlab solutions
         self.assertAlmostEqual(xFC, 27.938628855042230)
+
+    def test_Width50(self):
+        xFC, _ = feature_characterization(self.z, self.dx, "D", "Width 50", "All", "HDh", "Mean")
+
+        # Verfy with matlab solutions
+        self.assertAlmostEqual(xFC, 26.461823860088230)
+
+    def test_DevLength50(self):
+        xFC, _ = feature_characterization(self.z, self.dx, "D", "DevLength 50", "All", "HDh", "Mean")
+
+        # Verfy with matlab solutions
+        self.assertAlmostEqual(xFC, 27.519549401462786)
 
 
 if __name__ == "__main__":

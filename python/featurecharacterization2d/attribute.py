@@ -89,7 +89,7 @@ class FeatureAttribute(object):
     def HDlf(z, dx, Mr):
         zlp = z[Mr.ilp.astype(int)]
         direction = np.sign(Mr.ihp - Mr.ilp)
-        ihi_end = Mr.ihi[-1]
+        ihi_end = Mr.ihi[-1][-1]
         i1 = np.abs(np.ceil(direction * Mr.ilp)).astype(int)
         i2 = np.abs(np.floor(direction * ihi_end)).astype(int)
         zf = z[np.arange(i1[0], i2[0] + direction[0], direction[0]).astype(int)]

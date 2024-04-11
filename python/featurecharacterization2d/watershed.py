@@ -147,13 +147,14 @@ class Watershed(object):
         direction = np.sign(ihp - ilp).astype(int)
         zlp = z[int(np.round(ilp))]
         ihi = []
-        j = int(np.round(ilp)) + direction*(np.where(z[int(np.round(ilp)):int(np.round(ihp)):direction] != zlp)[0][0] - 1)
+        j = int(np.round(ilp)) + direction*(np.where(z[int(np.round(ilp)):int(np.round(ihp)):direction] != zlp)[0][0])
         # getting height-intesections (based on crossing-the-line-segmentation)
-        while j != (ihp + 0.5).astype(int):
+        while j != (ihp).astype(int):
             if (z[j] < zlp and z[j + direction] >= zlp) or (z[j] >= zlp and z[j + direction] < zlp):
                 ihi.append(j + direction * (zlp - z[j]) / (z[j + direction] - z[j]))
             j += direction
         return ihi
+
 
     def optimal_periodicity(self, z, dx, M, nM, ATTR, PT) -> float:
         """
