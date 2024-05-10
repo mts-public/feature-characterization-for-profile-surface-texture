@@ -5,8 +5,8 @@ x = (0:dx:iend*dx - dx)'/1000;
 z = z(:);                                              % make sure that vector is colum-vector
 FT = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));     % identify feature type. FT = -1 if Hills, FT = 1 if Dales
 %% plot settings
-xlabel('profile length / \textit{mm}','Interpreter','latex','FontSize',10)
-ylabel('profile height / \textit{$\mu m$}','Interpreter','latex','FontSize',10)
+xlabel('profile length / mm','FontSize',10,'FontName','Times New Roman')
+ylabel('profile height / µm','FontSize',10,'FontName','Times New Roman')
 linewidth=0.85;
 alpha = 0.5;                                           % transparicy-value for not significant motifs
 col = [0 0.4470 0.7410];                               % color of motifs

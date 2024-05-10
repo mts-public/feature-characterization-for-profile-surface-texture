@@ -2,7 +2,7 @@
 The algoritm is based on the definitions in ISO 21920-2.
 With appropriate permissions, the iso can be viewed here: https://nautos.de/3PI/search/item-detail/DE30091970
 
-A documentation of the algorihtm can be found here: https://www.overleaf.com/4687699647jtrjxjypwqmz#0ccd85
+A documentation of the algorihtm can be found here: *DOI*
 
 ## Watershed Segmentation
 In the following are some illustrations to show idea of watershed segemenation. For more information see documentation.

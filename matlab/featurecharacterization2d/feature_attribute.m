@@ -66,7 +66,7 @@ HDl = (sum(sqrt(1 + (diff(zf)./dx).^2))...
 end
 
 function cx = curvature(z, dx, ix)
-if mod(ix,1)~=0
+if mod(ix,1) ~= 0
     ix = [floor(ix) ceil(ix)];
 end
 for n=1:length(ix)

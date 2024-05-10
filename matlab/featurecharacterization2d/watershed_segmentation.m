@@ -141,12 +141,13 @@ function ihi = height_intersections(z, ilp, ihp)
 
 % direction in which to search ihi outgoing form low-peak
 dir = sign(ihp - ilp);
-zlp = z(round(ilp));
+ilp=round(ilp);ihp=round(ihp);
+zlp = z(ilp);
 ihi = [];
 % starting index. if plateau: index of edge of plateau
-j = round(ilp)+dir*(find(z(round(ilp):dir:round(ihp))~=zlp,1)-1);
+j = ilp+dir*(find(z(ilp:dir:round(ihp))~=zlp,1)-1);
 % getting height-intesections (based on crossing-the-line-segmentation)
-while j ~= round(ihp)
+while j ~= ihp
     if (z(j) < zlp && z(j+dir) >= zlp) || (z(j) >= zlp && z(j+dir) < zlp)
         ihi = [ihi; j + dir*(zlp - z(j))/(z(j + dir) - z(j))];
     end

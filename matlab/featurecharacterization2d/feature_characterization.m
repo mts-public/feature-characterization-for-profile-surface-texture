@@ -35,8 +35,12 @@ TH = str2double(str(min(2,N)));     % TH=NaN when no number
 if N == 2 && isnan(TH)              % 
     TH = "opt";
 end
-if N >= 3                           % N=4 if by strrep 2 blanks 
-    TH = (TH/100)*Rz(z, dx);
+if N >= 3                           % N=4 if by strrep 2 blanks
+    if PT=="Wolfprune"
+        TH = (TH/100)*Rz(z, dx);
+    elseif PT=="Width"
+        TH = (TH/100)*length(z)*dx;
+    end
 end
 
 %% parse significant
