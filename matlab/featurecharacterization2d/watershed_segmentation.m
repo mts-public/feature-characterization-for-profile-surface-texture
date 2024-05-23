@@ -57,19 +57,19 @@ end
 % skip pruning if pruning type (PT) is "None"
 if PT ~= "None"
     % determine attribute-values of each motif
-    ATTR = feature_attribute(z, dx, M, PT);
+    attr = feature_attribute(z, dx, M, PT);
     % find optimal limit for maximum periodicity (if requested)
     if strcmp(TH, "opt")
-       TH = optimal_periodicity(z, dx, M, nM, ATTR, PT);
+       TH = optimal_periodicity(z, dx, M, nM, attr, PT);
     end
     % prune aslong minimal attribute value is lower than given threshold
-    while min(ATTR) < TH
-        [M, nM, ATTR] = prune_min_motif(z, dx, M, nM, ATTR, PT);
+    while min(attr) < TH
+        [M, nM, attr] = prune_min_motif(z, dx, M, nM, attr, PT);
     end
 end
 end
 %% optimal threshold function
-function TH = optimal_periodicity(z, dx, M, nM, ATTR, PT)
+function TH = optimal_periodicity(z, dx, M, nM, attr, PT)
 % minimal Q-Value
 Qmin = 3;
 % set default threshold for the case that Qmin is never exceeded
@@ -77,24 +77,24 @@ TH = 100;
 % prune until just two motifs are left
 while nM > 2
     % parameter Q as a measure for periodicity
-    Q = mean(ATTR) / std(ATTR);
+    Q = mean(attr) / std(attr);
     % if Q is greater than Qmin then overwrite Qmin with the current 
     % Q-value and TH with minimal attribute value
     if Q > Qmin
         Qmin = Q;
-        TH = min(ATTR);
+        TH = min(attr);
     end
-    [M, nM, ATTR] = prune_min_motif(z, dx, M, nM, ATTR, PT);
+    [M, nM, attr] = prune_min_motif(z, dx, M, nM, attr, PT);
 end
 end
 %% prune min-motif function
-function [M, nM, ATTR] = prune_min_motif(z, dx, M, nM, ATTR, PT)
+function [M, nM, attr] = prune_min_motif(z, dx, M, nM, attr, PT)
 % row-index of minimal attribute value
-[~, rmin] = min(ATTR);
+[~, rmin] = min(attr);
 % save motif with minimal attribute-value temporarily, delete 
 % corresponding entry in motif-array and attribute-vector. update nM
 Mmin = M(rmin);
-M(rmin) = []; ATTR(rmin) = []; 
+M(rmin) = []; attr(rmin) = []; 
 nM = nM - 1;
 % determine row-index of motif which is to update (rU). dir=-1: left of
 % min-motif. dir=1 right of min-motif. rU = rmin if dir=1 because
@@ -127,7 +127,7 @@ end
 % update height intersection and attribute-value of motif to update for
 % case 2 and 3.2
 M(rU).ihi = height_intersections(z, M(rU).ilp, M(rU).ihp);
-ATTR(rU) = feature_attribute(z, dx, M(rU), PT);
+attr(rU) = feature_attribute(z, dx, M(rU), PT);
 end
 
 %% height intersection function

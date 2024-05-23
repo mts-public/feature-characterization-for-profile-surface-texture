@@ -1,4 +1,4 @@
-function [xFC, M, ATTR] = feature_parameter(z, dx, M,...
+function [xFC, M, attr] = feature_parameter(z, dx, M,...
                                            Fsig, NIsig, AT, Astats, vstats)
 %% step 4: determine significant_features
 I_Nsig = [];
@@ -17,9 +17,9 @@ switch Fsig
         end
     case {"Top", "Bot"}
         % determine attribute values
-        ATTR = feature_attribute(z, dx, M, "PVh");
+        attr = feature_attribute(z, dx, M, "PVh");
         % determine indices (I) of sorted zv-values in zv
-        [~, I_sort] = sort(ATTR, 'descend');
+        [~, I_sort] = sort(attr, 'descend');
         % if NIsig is higher than nM use nM
         NIsig = min(NIsig, length(M));
         I_Nsig = I_sort(NIsig+1:end);
@@ -30,26 +30,26 @@ for i = 1:length(I_Nsig)
 end
 
 %% step 5: determine attibrute-values of significant features
-ATTR = feature_attribute(z, dx, M, AT);
+attr = feature_attribute(z, dx, M, AT);
 
 %% step 6: attribute statistics
 switch Astats
     case "Mean"
-        xFC = mean(ATTR);
+        xFC = mean(attr);
     case "Max"
-        xFC = max(ATTR);
+        xFC = max(attr);
     case "Min"
-        xFC = min(ATTR);
+        xFC = min(attr);
     case "StdDev"
-        xFC = std(ATTR);
+        xFC = std(attr);
     case "Perc"
-        xFC = sum(ATTR > vstats)/nMsig;
+        xFC = sum(attr > vstats)/nMsig;
     case "Hist"
         figure
-        xFC = histogram(ATTR,length(ATTR));
+        xFC = histogram(attr,length(attr));
     case "Sum"
-        xFC = sum(ATTR);
+        xFC = sum(attr);
     case "Density"
-        xFC = sum(ATTR)/(dx*length(z));
+        xFC = sum(attr)/(dx*length(z));
 end
 end

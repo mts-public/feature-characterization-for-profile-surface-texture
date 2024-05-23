@@ -1,4 +1,4 @@
-function ATTR = feature_attribute(z, dx, M, AT)
+function attr = feature_attribute(z, dx, M, AT)
 % INPUTS:
 %   z   - vertical profile values
 %   dx  - step size in x-direction
@@ -7,33 +7,33 @@ function ATTR = feature_attribute(z, dx, M, AT)
 %                         "HDv", "DevLength", "HDl", "PVh", "Curvature",...
 %                         "Count"}
 % Outputs
-%   ATTR - attribute value of given motifs
+%   attr - attribute value of given motifs
 
 I_sig = find([M.sig] == 1);
 switch AT
     case {"Wolfprune", "HDh"}
-        ATTR = abs(z(floor([M(I_sig).ilp])) - z(floor([M(I_sig).iv])));
+        attr = abs(z(floor([M(I_sig).ilp])) - z(floor([M(I_sig).iv])));
     case {"Width", "HDw"}
         for i = 1:length(I_sig)
-            ATTR(i) = dx*max(abs(M(I_sig(i)).ihi - M(I_sig(i)).ilp));
+            attr(i) = dx*max(abs(M(I_sig(i)).ihi - M(I_sig(i)).ilp));
         end
     case {"VolS", "HDv"}
         for i = 1:length(I_sig)
-            ATTR(i) = HDvf(z, dx, M(I_sig(i)));
+            attr(i) = HDvf(z, dx, M(I_sig(i)));
         end
     case {"DevLength", "HDl"}
         for i = 1:length(I_sig)
-            ATTR(i) = HDlf(z, dx, M(I_sig(i)));
+            attr(i) = HDlf(z, dx, M(I_sig(i)));
         end
     case "PVh"
         FTI = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));
-        ATTR = -FTI*z(floor([M(I_sig).iv]));
+        attr = -FTI*z(floor([M(I_sig).iv]));
     case "Curvature"
         for i = 1:length(I_sig)
-            ATTR(i) = curvature(z, dx, M(I_sig(i)).iv);
+            attr(i) = curvature(z, dx, M(I_sig(i)).iv);
         end
     case "Count"
-        ATTR = ones(1, length(I_sig));
+        attr = ones(1, length(I_sig));
 end
 end
 

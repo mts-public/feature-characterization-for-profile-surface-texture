@@ -1,4 +1,4 @@
-function [xFC, M, meta] = feature_characterization(z, dx, FT, pruning,...
+function [xFC, M, META] = feature_characterization(z, dx, FT, pruning,...
     significant, AT, stats)
 % INPUTS:
 %   z           - vertical profile values
@@ -24,7 +24,7 @@ function [xFC, M, meta] = feature_characterization(z, dx, FT, pruning,...
 % OUTPUTS:
 %   xFC         - parameter based on feature characterization
 %   M           - structured array of motifs
-%   meta        - meta data for further processing (e.g. plotting)
+%   META        - meta data for further processing (e.g. plotting)
 
 %% parse pruning
 pruning = strrep(pruning,"%"," %"); % add blank before "%"
@@ -60,8 +60,8 @@ vstats = str2double(str(end));
 
 %% feature characterization
 M = watershed_segmentation(z, dx, FT, PT, TH);
-[xFC, M, ATTR] = feature_parameter(z, dx, M,...
+[xFC, M, attr] = feature_parameter(z, dx, M,...
     Fsig, NIsig, AT, Astats, vstats);
-meta = struct('ATTR', ATTR, 'nM', length(M), 'PT', PT, 'TH', TH, 'Fsig',...
+META = struct('attr', attr, 'nM', length(M), 'PT', PT, 'TH', TH, 'Fsig',...
     Fsig, 'NIsig', NIsig,'AT', AT, 'Astats', Astats,'vstats', vstats);
 end
