@@ -3,6 +3,9 @@ function plot_motifs(z, dx, M, Fsig, NIsig, qualitative, changetree)
 iend = length(z);
 x = (0:dx:iend*dx - dx)'/1000;
 z = z(:);                                              % make sure that vector is colum-vector
+if isempty(M)
+    error('No features detected. Maybe check pruning configuration')
+end
 FT = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));     % identify feature type. FT = -1 if Hills, FT = 1 if Dales
 %% plot settings
 xlabel('profile length / mm','FontSize',10,'FontName','Times New Roman')
@@ -11,7 +14,7 @@ linewidth=0.85;
 alpha = 0.5;                                           % transparicy-value for not significant motifs
 col = [0 0.4470 0.7410];                               % color of motifs
 xlim([0 max(x)])
-ylim(1.1*[min(z) max(z)])
+ylim(1.1*[min([z; NIsig]) max([z; NIsig])])
 grid on
 box on
 hold on

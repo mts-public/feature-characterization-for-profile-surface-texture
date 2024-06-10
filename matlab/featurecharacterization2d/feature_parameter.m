@@ -2,6 +2,13 @@ function [xFC, M, attr] = feature_parameter(z, dx, M,...
                                            Fsig, NIsig, AT, Astats, vstats)
 %% step 4: determine significant_features
 I_Nsig = [];
+nM = length(M);
+% error handling if M is empty
+if isempty(M)
+    warning("No features detected. Check pruning configuration.")
+    xFC = NaN; attr = NaN;
+    return
+end
 switch Fsig
     case {"Open", "Closed"}
         % feature type indicator (FTI=-1: hills/peaks, FTI=1: dales/pits)
@@ -21,12 +28,18 @@ switch Fsig
         % determine indices (I) of sorted zv-values in zv
         [~, I_sort] = sort(attr, 'descend');
         % if NIsig is higher than nM use nM
-        NIsig = min(NIsig, length(M));
+        NIsig = min(NIsig, nM);
         I_Nsig = I_sort(NIsig+1:end);
 end
 % set indicator M.sig zero for not significant motifs
 for i = 1:length(I_Nsig)
     M(I_Nsig(i)).sig = 0;
+end
+% error handling if there are no significant features
+if length(I_Nsig) == nM
+    warning("All features are declared as not significant.")
+    xFC = NaN; attr = NaN;
+    return
 end
 
 %% step 5: determine attibrute-values of significant features
