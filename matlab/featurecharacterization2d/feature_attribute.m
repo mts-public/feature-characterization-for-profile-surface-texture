@@ -1,4 +1,4 @@
-function ATTR = feature_attribute(z, dx, M, AT)
+function attr = feature_attribute(z, dx, M, AT)
 % INPUTS:
 %   z   - vertical profile values
 %   dx  - step size in x-direction
@@ -7,44 +7,43 @@ function ATTR = feature_attribute(z, dx, M, AT)
 %                         "HDv", "DevLength", "HDl", "PVh", "Curvature",...
 %                         "Count"}
 % Outputs
-%   ATTR - attribute value of given motifs
+%   attr - attribute value of given motifs
 
 I_sig = find([M.sig] == 1);
 switch AT
     case {"Wolfprune", "HDh"}
-        ATTR = abs(z(floor([M(I_sig).ilp])) - z(floor([M(I_sig).iv])));
+        attr = abs(z(floor([M(I_sig).ilp])) - z(floor([M(I_sig).iv])));
     case {"Width", "HDw"}
         for i = 1:length(I_sig)
-            ATTR(i) = dx*max(abs(M(I_sig(i)).ihi - M(I_sig(i)).ilp));
+            attr(i) = dx*max(abs(M(I_sig(i)).ihi - M(I_sig(i)).ilp));
         end
     case {"VolS", "HDv"}
         for i = 1:length(I_sig)
-            ATTR(i) = HDvf(z, dx, M(I_sig(i)));
+            attr(i) = HDvf(z, dx, M(I_sig(i)));
         end
     case {"DevLength", "HDl"}
         for i = 1:length(I_sig)
-            ATTR(i) = HDlf(z, dx, M(I_sig(i)));
+            attr(i) = HDlf(z, dx, M(I_sig(i)));
         end
     case "PVh"
         FTI = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));
-        ATTR = -FTI*z(floor([M(I_sig).iv]));
+        attr = -FTI*z(floor([M(I_sig).iv]));
     case "Curvature"
         for i = 1:length(I_sig)
-            ATTR(i) = curvature(z, dx, M(I_sig(i)).iv);
+            attr(i) = curvature(z, dx, M(I_sig(i)).iv);
         end
     case "Count"
-        ATTR = ones(1, length(I_sig));
+        attr = ones(1, length(I_sig));
 end
 end
 
 function HDv = HDvf(z, dx, Mr)
-% all heightintersections incl. low-peak
 ihi = [Mr.ilp; Mr.ihi];
 zlp = z(floor(Mr.ilp));
 A = 0;i=1;
 dir = sign(Mr.ihp - Mr.ilp);
 while i < length(ihi)
-    i1 = abs(ceil(dir*ihi(i)));     % round toward pit of current area
+    i1 = abs(ceil(dir*ihi(i)));
     i2 = abs(floor(dir*ihi(i+1)));
     xf = [ihi(i); (i1:dir:i2)'; ihi(i+1)]*dx;
     zf = [zlp; z(i1:dir:i2); zlp];
@@ -67,7 +66,7 @@ HDl = (sum(sqrt(1 + (diff(zf)./dx).^2))...
 end
 
 function cx = curvature(z, dx, ix)
-if mod(ix,1)~=0
+if mod(ix,1) ~= 0
     ix = [floor(ix) ceil(ix)];
 end
 for n=1:length(ix)
