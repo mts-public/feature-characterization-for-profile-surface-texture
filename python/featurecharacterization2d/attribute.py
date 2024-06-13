@@ -3,7 +3,6 @@ import numpy as np
 
 
 class FeatureAttribute(object):
-
     @classmethod
     def compute(cls, z: np.ndarray, dx: float, M: Motif, AT: np.ndarray):
         """
@@ -34,9 +33,13 @@ class FeatureAttribute(object):
                 for i in range(I_sig.size):
                     ATTR[i] = dx * np.max(np.abs(M[I_sig[i]].ihi - M[I_sig[i]].ilp))
             case "VolS" | "HDv":
-                ATTR = np.zeros(I_sig.size)
-                for i in range(I_sig.size):
-                    ATTR[i] = cls.HDvf(z, dx, M[I_sig[i]])
+                try:
+                    ATTR = np.zeros(I_sig.size)
+                    for i in range(I_sig.size):
+                        ATTR[i] = cls.HDvf(z, dx, M[I_sig[i]])
+                except ValueError:
+                    print("HEEEEEEEEEEEEEEEEEEEEEEELPPPP")
+                    ATTR[0] = cls.HDvf(z, dx, M[I_sig[0]])
             case "DevLength" | "HDl":
                 ATTR = np.zeros(I_sig.size)
                 for i in range(I_sig.size):

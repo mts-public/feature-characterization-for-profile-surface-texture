@@ -70,6 +70,8 @@ def feature_characterization(
     if N >= 3:
         if PT == "Wolfprune":
             TH = TH / 100.0 * maximum_height(z, dx)
+        elif PT == "Width":
+            TH = TH / 100.0 * len(z) * dx
 
     # parse significant
     significant = significant.replace("%", " %")
