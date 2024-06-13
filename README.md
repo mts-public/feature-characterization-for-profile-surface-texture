@@ -1,6 +1,5 @@
 # Feature Characterization
 The algoritm is based on the definitions in ISO 21920-2.
-With appropriate permissions, the iso can be viewed here: https://nautos.de/3PI/search/item-detail/DE30091970
 
 A documentation of the algorihtm can be found here: *DOI*
 
