@@ -3,6 +3,7 @@ from .attribute import FeatureAttribute
 from .characterization import feature_characterization
 from .parameter import feature_parameter
 from .plot import plot_motif
+from .Rcm import inverse_material_ratio
 
 
 __all__ = [
@@ -10,5 +11,6 @@ __all__ = [
     "FeatureAttribute",
     "feature_characterization",
     "feature_parameter",
-    "plot_motif"
-    ]
+    "plot_motif",
+    "inverse_material_ratio",
+]
