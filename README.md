@@ -44,11 +44,11 @@ save path
 Install `featurecharacterization2d` package.
 
 ```bash
-cd pyhton
+cd python
 pip install .
 ```
 
-Additional dependencies for development and plotting (`scipy`, `matplotlib`, `jupyter notebook`) are installed by 
+Additional dependencies for development and plotting (`scipy`, `matplotlib`, `jupyter notebook`) are installed by
 ```bash
 pip install .[extra]
 ```
