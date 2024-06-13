@@ -2,9 +2,19 @@ import numpy as np
 
 from .watershed import Watershed
 from .parameter import feature_parameter
+from .Rz import maximum_height
+from .Rcm import inverse_material_ratio
 
 
-def feature_characterization(z = None, dx = None, FT = None, pruning = None, significant = None, AT = None, stats = None): 
+def feature_characterization(
+    z: np.ndarray,
+    dx: float,
+    FT: str,
+    pruning: str,
+    significant: str,
+    AT: str,
+    stats: str,
+):
     """
     Parameters
     ----------
@@ -44,47 +54,57 @@ def feature_characterization(z = None, dx = None, FT = None, pruning = None, sig
             meta data for further processing (e.g. plotting)
     """
 
-    ## parse pruning
-    pruning = pruning.replace('%',' %')
-    str = pruning.split(' ')
+    # parse pruning
+    pruning = pruning.replace("%", " %")
+    str = pruning.split(" ")
     PT = str[0]
     N = len(str)
     try:
-        TH = float(str[np.min([2,N])-1])
+        TH = float(str[np.min([2, N]) - 1])
     except ValueError:
         TH = np.nan
-    
+
     if N == 2 and np.isnan(TH):
-        TH = 'opt'
-    
+        TH = "opt"
+
     if N >= 3:
-        TH = (TH / 100) * iso21920('fnciso21920_feature_parameters_peak_pit',z,len(z) / 5,5).xz
-    
-    ## parse significant
-    significant = significant.replace('%',' %')
-    str = significant.split(' ')
+        if PT == "Wolfprune":
+            TH = TH / 100.0 * maximum_height(z, dx)
+
+    # parse significant
+    significant = significant.replace("%", " %")
+    str = significant.split(" ")
     Fsig = str[0]
     N = len(str)
     try:
-        NIsig = float(str[np.min([2,N])-1])
+        NIsig = float(str[np.min([2, N]) - 1])
     except ValueError:
         NIsig = np.nan
-    
+
     if N >= 3:
-        hintersection,material = iso21920('fnciso21920_material_ratio_functions_imp',z,len(z))
-        NIsig = np.amax(z) + iso21920('fnciso21920_material_ratio_functions_xcm',material,hintersection,len(material),NIsig,1)
-    
-    ## parse stats
-    str = stats.split(' ')
+        NIsig = np.max(z) + inverse_material_ratio(z, NIsig)
+
+    # parse stats
+    str = stats.split(" ")
     Astats = str[0]
     try:
         vstats = float(str[-1])
     except ValueError:
         vstats = np.nan
-        
-    watershed = Watershed(z,dx,FT,PT,TH)
+
+    # feature characterization
+    watershed = Watershed(z, dx, FT, PT, TH)
     M = watershed.motifs()
-    xFC,M,ATTR,_,_ = feature_parameter(z,dx,M, Fsig, NIsig, AT, Astats, vstats)
-    # meta = struct('ATTR',ATTR,'nM',len(M),'PT',PT,'TH',TH,'Fsig',Fsig,'NIsig',NIsig,'AT',AT,'Astats',Astats,'vstats',vstats)
-    # return xFC,M,meta
-    return xFC,M
+    xFC, M, attr, _, _ = feature_parameter(z, dx, M, Fsig, NIsig, AT, Astats, vstats)
+    meta = {
+        "attr": attr,
+        "nM": len(M),
+        "PT": PT,
+        "TH": TH,
+        "Fsig": Fsig,
+        "NIsig": NIsig,
+        "AT": AT,
+        "Astats": Astats,
+        "vstats": vstats,
+    }
+    return xFC, M, meta
