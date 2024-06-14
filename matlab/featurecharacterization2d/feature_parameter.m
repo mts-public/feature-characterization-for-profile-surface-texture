@@ -64,5 +64,5 @@ switch Astats
         xFC = sum(attr);
     case "Density"
         xFC = sum(attr)/(dx*length(z));
-end
+ end
 end

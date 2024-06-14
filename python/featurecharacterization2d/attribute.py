@@ -3,7 +3,6 @@ import numpy as np
 
 
 class FeatureAttribute(object):
-
     @classmethod
     def compute(cls, z: np.ndarray, dx: float, M: Motif, AT: np.ndarray):
         """
