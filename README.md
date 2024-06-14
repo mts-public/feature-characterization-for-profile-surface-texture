@@ -1,7 +1,7 @@
 # Feature Characterization
 The algoritm is based on the definitions in ISO 21920-2.
 
-A documentation of the algorihtm can be found here: *DOI*
+A documentation of the algorihtm can be found here: [DOI](https://doi.org/10.48550/arXiv.2406.06381)
 
 ## Watershed Segmentation
 In the following are some illustrations to show idea of watershed segemenation. For more information see documentation.
