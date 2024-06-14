@@ -1,10 +1,10 @@
 # Feature Characterization
-The algoritm is based on the definitions in ISO 21920-2.
+The algorithm is based on the definitions in ISO 21920-2.
 
-A documentation of the algorihtm can be found here: *DOI*
+This repo is the companion code for [Feature Characterization for Profile Surface Texture](https://arxiv.org/abs/2406.06381).
 
 ## Watershed Segmentation
-In the following are some illustrations to show idea of watershed segemenation. For more information see documentation.
+In the following are some illustrations to show the idea of watershed segmentation. For more information, see the paper.
 
 <!-- ### Method to determine watersheds in 2.5D data set
 <div align="center">
