@@ -3,6 +3,7 @@ from .attribute import FeatureAttribute
 from .characterization import feature_characterization
 from .parameter import feature_parameter
 from .plot import plot_motif
+from .Rz import maximum_height
 from .Rcm import inverse_material_ratio
 
 
@@ -13,4 +14,5 @@ __all__ = [
     "feature_parameter",
     "plot_motif",
     "inverse_material_ratio",
+    "maximum_height",
 ]
