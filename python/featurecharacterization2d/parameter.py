@@ -55,7 +55,7 @@ def feature_parameter(
 
     # set indicator M.sig zero for not significant motifs
     for i in range(len(I_Nsig)):
-        M[I_Nsig[i]].sig = 0
+        M.sig[I_Nsig[i]] = 0
 
     # error handling if there are no significant features
     if len(I_Nsig) == nM:

@@ -19,8 +19,8 @@ class TestFC(unittest.TestCase):
             self.z, self.dx, "D", "Wolfprune 5 %", "Open 10 %", "HDv", "Max"
         )
 
-        # Verfy with matlab solutions
-        self.assertAlmostEqual(xFC, 0.00568929076242738)
+        # Verify with matlab solutions
+        self.assertAlmostEqual(xFC, 0.0216294517099762)
 
     def test_wolfprune5_top_max(self):
         xFC, _, _ = feature_characterization(
@@ -35,7 +35,7 @@ class TestFC(unittest.TestCase):
             self.z, self.dx, "D", "Wolfprune 3", "All", "HDh", "Mean"
         )
 
-        # Verfy with matlab solutions
+        # Verify with matlab solutions
         self.assertAlmostEqual(xFC, 4.312365774565255)
 
     def test_Volume1(self):
@@ -43,7 +43,7 @@ class TestFC(unittest.TestCase):
             self.z, self.dx, "D", "VolS 1", "All", "HDh", "Mean"
         )
 
-        # Verfy with matlab solutions
+        # Verify with matlab solutions
         self.assertAlmostEqual(xFC, 27.938628855042230)
 
     def test_Width50(self):
@@ -51,7 +51,7 @@ class TestFC(unittest.TestCase):
             self.z, self.dx, "D", "Width 50", "All", "HDh", "Mean"
         )
 
-        # Verfy with matlab solutions
+        # Verify with matlab solutions
         self.assertAlmostEqual(xFC, 26.461823860088230)
 
     def test_DevLength50(self):
@@ -59,7 +59,7 @@ class TestFC(unittest.TestCase):
             self.z, self.dx, "D", "DevLength 50", "All", "HDh", "Mean"
         )
 
-        # Verfy with matlab solutions
+        # Verify with matlab solutions
         self.assertAlmostEqual(xFC, 27.519549401462786)
 
 
