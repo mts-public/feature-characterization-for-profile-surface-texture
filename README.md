@@ -11,6 +11,9 @@ In the following are some illustrations to show the idea of watershed segmentati
 <video controls src="data/figures for readme/animation.mp4"></video>
 </div> -->
 
+### Method to determine watersheds in 2.5D data set
+https://github.com/mts-public/feature-characterization-for-profile-surface-texture/assets/160241233/c9c3f5b2-3d39-4655-8e8a-f84d95a2a652
+
 ### Method transferred to 2D data set
 <div align="center">
 <img width="720" src="data/figures_for_readme/animation.gif" />
