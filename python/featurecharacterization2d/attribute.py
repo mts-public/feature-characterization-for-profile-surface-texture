@@ -33,13 +33,9 @@ class FeatureAttribute(object):
                 for i in range(I_sig.size):
                     ATTR[i] = dx * np.max(np.abs(M[I_sig[i]].ihi - M[I_sig[i]].ilp))
             case "VolS" | "HDv":
-                try:
-                    ATTR = np.zeros(I_sig.size)
-                    for i in range(I_sig.size):
-                        ATTR[i] = cls.HDvf(z, dx, M[I_sig[i]])
-                except ValueError:
-                    print("HEEEEEEEEEEEEEEEEEEEEEEELPPPP")
-                    ATTR[0] = cls.HDvf(z, dx, M[I_sig[0]])
+                ATTR = np.zeros(I_sig.size)
+                for i in range(I_sig.size):
+                    ATTR[i] = cls.HDvf(z, dx, M[I_sig[i]])
             case "DevLength" | "HDl":
                 ATTR = np.zeros(I_sig.size)
                 for i in range(I_sig.size):
