@@ -23,7 +23,7 @@ The Convention is summarized in the following figure:
 </div>
 The functionality can be tested directly using minimal_example.m with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profles for case studies" can be loaded and the algorithm applied by varying the various input arguments.
 <div align="center">
-<img width="720" src="data/figures_for_readme/GUI.png" />
+<img width="720" src="data/figures_for_readme/GUI.PNG" />
 </div>
 
 ## Preliminaries MATLAB
