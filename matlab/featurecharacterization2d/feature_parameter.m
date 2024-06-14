@@ -56,7 +56,7 @@ switch Astats
     case "StdDev"
         xFC = std(attr);
     case "Perc"
-        xFC = sum(attr > vstats)/nMsig;
+        xFC = sum(attr > vstats)/length(attr);
     case "Hist"
         figure
         xFC = histogram(attr,length(attr));
