@@ -1,10 +1,17 @@
+import os
+
 from .watershed import Watershed
 from .attribute import FeatureAttribute
 from .characterization import feature_characterization
 from .parameter import feature_parameter
 from .plot import plot_motif
-from .Rz import maximum_height
-from .Rcm import inverse_material_ratio
+
+if os.name == "nt":
+    from .Rzwin import maximum_height
+    from .Rcmwin import inverse_material_ratio
+else:
+    from .Rz import maximum_height
+    from .Rcm import inverse_material_ratio
 
 
 __all__ = [

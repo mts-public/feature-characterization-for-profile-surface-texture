@@ -1,9 +1,15 @@
+import os
 import numpy as np
 
 from .watershed import Watershed
 from .parameter import feature_parameter
-from .Rz import maximum_height
-from .Rcm import inverse_material_ratio
+
+if os.name == "nt":
+    from .Rzwin import maximum_height
+    from .Rcmwin import inverse_material_ratio
+else:
+    from .Rz import maximum_height
+    from .Rcm import inverse_material_ratio
 
 
 def feature_characterization(
