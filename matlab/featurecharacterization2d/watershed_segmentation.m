@@ -141,7 +141,7 @@ function ihi = height_intersections(z, ilp, ihp)
 
 % direction in which to search ihi outgoing form low-peak
 dir = sign(ihp - ilp);
-ilp=round(ilp);ihp=round(ihp);
+ilp = round(ilp);ihp = round(ihp);
 zlp = z(ilp);
 ihi = [];
 % starting index. if plateau: index of edge of plateau
