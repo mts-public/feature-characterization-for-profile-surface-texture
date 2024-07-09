@@ -12,9 +12,9 @@ function [xFC, M, META] = feature_characterization(z, dx, FT, pruning,...
 %                 as the threshold in the case of Wolfprune and X% of Le in
 %                 the case of Width.
 %   significant - "All", "Closed c", "Open c", "Bot N", "Top N"
-%                 c can be an absolute value in µm or if the value is given 
-%                 as a percentage it is interpreted as a material ratio 
-%                 from which the height is then determined.
+%                 c can be an absolute value in micrometer or if the value 
+%                 is given as a percentage it is interpreted as a material 
+%                 ratio from which the height is then determined.
 %                 N specifies the number of top or bot values.
 %   AT          - "HDh", "HDv", "HDw", "HDl", "PVh", "Curvature", "Count"
 %   stats       - "Mean", "Max", "Min", "StdDev", "Perc X",

@@ -1,4 +1,8 @@
 function plot_motifs(z, dx, M, Fsig, NIsig, qualitative, changetree)
+if nargin == 3
+    NIsig = [];
+end
+
 %% preallocating
 iend = length(z);
 x = (0:dx:iend*dx - dx)'/1000;

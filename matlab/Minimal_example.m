@@ -5,5 +5,5 @@ z = [3.3 2 1 5 3.8 4 1.5 1.5 3.5 2.5 2 -1 0 3 1.2 2 -1.2 -5 -4 -4.5 -2 -2.3 1 3 
 z = (z-mean(z))';
 dx = 0.5;
 
-[xFC, M, META] = feature_characterization(z, dx, "D", "Wolfprune 5 %", "Open 10 %", "HDh", "Perc 2.5");
+[xFC, M, META] = feature_characterization(z, dx, "D", "Wolfprune 5 %", "All", "Curvature", "Mean");
 plot_motifs(z, dx, M, META.Fsig, META.NIsig);
