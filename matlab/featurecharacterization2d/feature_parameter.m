@@ -10,6 +10,14 @@ if isempty(M)
     return
 end
 switch Fsig
+    case {"Top", "Bot"}
+        % if NIsig is higher than nM use nM
+        NIsig = min(NIsig, nM);
+        % determine attribute values
+        attr = feature_attribute(z, dx, M, "PVh");
+        % determine indices (I) of sorted zv-values in zv
+        [~, I_sort] = sort(attr, 'descend');
+        I_Nsig = I_sort(NIsig+1:end);
     case {"Open", "Closed"}
         % feature type indicator (FTI=-1: hills/peaks, FTI=1: dales/pits)
         FTI = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));
@@ -22,14 +30,6 @@ switch Fsig
             zv = z(floor([M.iv]));
             I_Nsig = find(FTI*zlp < FTI*NIsig | FTI*zv > FTI*NIsig);
         end
-    case {"Top", "Bot"}
-        % determine attribute values
-        attr = feature_attribute(z, dx, M, "PVh");
-        % determine indices (I) of sorted zv-values in zv
-        [~, I_sort] = sort(attr, 'descend');
-        % if NIsig is higher than nM use nM
-        NIsig = min(NIsig, nM);
-        I_Nsig = I_sort(NIsig+1:end);
 end
 % set indicator M.sig zero for not significant motifs
 for i = 1:length(I_Nsig)

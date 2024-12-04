@@ -1,11 +1,18 @@
 function plot_motifs(z, dx, M, Fsig, NIsig, qualitative, changetree)
-if nargin == 3
+if nargin < 5
     NIsig = [];
 end
-
+if nargin < 6
+    qualitative = 0;
+end
 %% preallocating
 iend = length(z);
-x = (0:dx:iend*dx - dx)'/1000;
+if isscalar(dx)
+    x = (0:dx:iend*dx - dx)';
+else
+    x = dx(:);
+    dx = x(2) - x(1);
+end
 % make sure that vector is colum-vector
 z = z(:);                                             
 if isempty(M)
@@ -14,15 +21,13 @@ end
 % feature type identifier. FTI = -1 if Hills, FTI = 1 if Dales
 FTI = sign(z(floor(M(1).ilp)) - z(floor(M(1).iv)));     
 %% plot settings
-xlabel('profile length / mm','FontSize',10,'FontName','Times New Roman')
-ylabel('profile height / µm','FontSize',10,'FontName','Times New Roman')
 linewidth=0.85;
 % transparicy-value for not significant motifs
 alpha = 0.5;                                           
 % color of motifs
 col = [0 0.4470 0.7410];                               
-xlim([0 max(x)])
-ylim(1.1*[min([z; NIsig]) max([z; NIsig])])
+xlim([min(x) max(x)])
+ylim(1.1*[min([z; NIsig']) max([z; NIsig'])])
 grid on
 box on
 hold on
@@ -30,11 +35,11 @@ hold on
 %% fill motifs and motif "frames"
 if nargin ~= 7 || ~(nargin == 7 && changetree == 1)
 for k = 1:length(M)
-    p{k} = patch_featureelement(z, dx, M(k), col);
+    p{k} = patch_featureelement(z, x, dx, M(k), col);
 end
 for k = 1:length(M)
     Mt = M(k);
-    pm{k} = plot(([Mt.ilp Mt.ilp Mt.ihp Mt.ihp]-1)*dx/1000,...
+    pm{k} = plot(([Mt.ilp Mt.ilp Mt.ihp Mt.ihp]-1)*dx+x(1),...
         [z(ceil(Mt.ilp)) z(ceil(Mt.iv)) z(ceil(Mt.iv)) z(ceil(Mt.ihp))],...
         'color', [1 0 0],'LineStyle','-');
 end
@@ -62,11 +67,19 @@ if nargin > 3
 end
 
 %% qualitativ
-if nargin >= 6 && qualitative == 1
+if qualitative == 0
+    xlabel('profile length / mm','FontSize',10,'FontName','Times New Roman')
+    ylabel('profile height / µm','FontSize',10,'FontName','Times New Roman')
+elseif qualitative == 1
     set(gca,'xticklabel',[])
     set(gca,'yticklabel',[])
     xlabel('profile length','Interpreter','latex')
     ylabel('profile height','Interpreter','latex')
+elseif qualitative == 2
+
+elseif qualitative == 3
+    set(gca,'xticklabel',[])
+    set(gca,'yticklabel',[])
 end
 
 %% change tree
@@ -111,17 +124,17 @@ T = tree(k,:);
 % left border case   
 if tree(k, 2) == 1                 
     plot(...
-        ([T(2) T(2) T(4) T(4)]-1)*dx/1000,...
+        ([T(2) T(2) T(4) T(4)]-1)*dx,...
         [z(floor(T(3))) z(floor(T(3))) z(floor(T(3))) z(floor(T(4)))],...
         'color', treegreen)
 % right border case
 elseif tree(k, 4) == iend   
     plot(...
-        ([T(2) T(2) T(4) T(4)]-1)*dx/1000,...
+        ([T(2) T(2) T(4) T(4)]-1)*dx,...
         [z(floor(T(2))) z(floor(T(3))) z(floor(T(3))) z(floor(T(3)))],...
         'color', treegreen)
 else
-    plot(([dx*(T(2)) dx*(T(2)) dx*(T(4)) dx*(T(4))]-dx)/1000,...
+    plot(([dx*(T(2)) dx*(T(2)) dx*(T(4)) dx*(T(4))]-dx),...
         [z(floor(T(2))) z(floor(T(3))) z(floor(T(3))) z(floor(T(4)))],...
         'color', treegreen)
 end
@@ -129,14 +142,14 @@ end
 end
 hold off
 
-function p = patch_featureelement(z, dx, Mr, col)
+function p = patch_featureelement(z, x, dx, Mr, col)
     dir = sign(Mr.ihp - Mr.ilp);
     ihi = [Mr.ilp; Mr.ihi];
     zlp = z(floor(Mr.ilp));
     for i = 1:2:length(ihi)-1
         i1 = abs(ceil(dir*ihi(i)));
         i2 = abs(floor(dir*ihi(i+1)));
-        xf = dx*([ihi(i); (i1:dir:i2)'; ihi(i+1)] - 1)/1000;
+        xf = ([(ihi(i)-1)*dx; x(i1:dir:i2); (ihi(i+1)-1)*dx]);
         zf = [zlp; z(i1:dir:i2); zlp];
         p{ceil(i/2)} = patch([xf; flip(xf)],...
             [zf; ones(length(zf), 1)*zlp],...

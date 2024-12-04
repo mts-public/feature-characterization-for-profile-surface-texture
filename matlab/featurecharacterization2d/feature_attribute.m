@@ -40,32 +40,34 @@ end
 function HDv = HDvf(z, dx, Mr)
 ihi = [Mr.ilp; Mr.ihi];
 zlp = z(floor(Mr.ilp));
-A = 0;i=1;
+A = 0; i=1;
 dir = sign(Mr.ihp - Mr.ilp);
 while i < length(ihi)
     i1 = abs(ceil(dir*ihi(i)));
     i2 = abs(floor(dir*ihi(i+1)));
     xf = [ihi(i); (i1:dir:i2)'; ihi(i+1)]*dx;
     zf = [zlp; z(i1:dir:i2); zlp];
-    A = A + abs(trapz(xf,zf-zlp));
+    A = A + abs(trapz(xf, zf-zlp));
     i = i + 2;
 end
 HDv = A/(length(z)*dx);
 end
 
 function  HDl = HDlf(z, dx, Mr)
+z = z/1000;
 zlp = z(floor(Mr.ilp));
 dir = sign(Mr.ihp - Mr.ilp);
 ihi_end = Mr.ihi(end);
 i1 = abs(ceil(dir*Mr.ilp));
 i2 = abs(floor(dir*ihi_end));
 zf = [z(i1:dir:i2)];
-HDl = (sum(sqrt(1 + (diff(zf)./dx).^2))...
+HDl = (sum(sqrt(1 + (diff(zf)./dx).^2)) ...
     + mod(Mr.ilp, 1))*dx...
-    + sqrt((ihi_end - i2)^2*dx^2+(zlp-z(i2))^2);
+    + sqrt((ihi_end - i2)^2*dx^2 + (zlp - z(i2))^2);
 end
 
 function cx = curvature(z, dx, ix)
+ix = ix;
 if mod(ix,1) ~= 0
     ix = [floor(ix) ceil(ix)];
 end
@@ -103,12 +105,13 @@ switch i
         dz2 = (137*z(end-6) + 93*z(end-5) - 285*z(end-4) + 470*z(end-3) ...
             - 255*z(end-2) - 147*z(end-1) + 137*z(end))/(180*(dx)^2);
     otherwise
-        dz1 = (-z(i-3) + 9*z(i-2) - 45*z(i-1) + 45*z(i+1) - 9*z(i+2) + ...
-            z(i+3))/(60*dx);
-        dz2 = (2*z(i-3) - 27*z(i-2) + 270*z(i-1) - 490*z(i) + 270*z(i+1)...
-            - 27*z(i+2) + 2*z(i+3))/(180*(dx)^2);
+        dz1 = (-z(i-2) + 9*z(i-1) - 45*z(i) + 45*z(i+2) - 9*z(i+3) + ...
+            z(i+4))/(60*dx);
+        dz2 = (2*z(i-2) - 27*z(i-1) + 270*z(i) - 490*z(i+1) + 270*z(i+2)...
+            - 27*z(i+3) + 2*z(i+4))/(180*(dx)^2);
 end
-cx(n) = dz2/(1 + dz1^2)^(3/2);
+cx(n) = dz2/((1 + dz1^2)^(3/2));
 end
 cx = mean(cx);
 end
+

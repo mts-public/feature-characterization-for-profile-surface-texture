@@ -1,10 +1,9 @@
-function M = watershed_segmentation(z, dx, FT, PT, TH)
+function TH = TH_for_optimal_periodicity(z, dx, FT, PT)
 % INPUTS:
 %  z  - vertical profile values
 %  dx - step size in x-direction
 %  FT - feature type: {'D', 'V', 'H', 'P'}
 %  PT - pruning type: {'None', 'Wolfprune', 'Width', 'VolS', 'DevLength'}
-%  TH - threshold for pruning (not needed if PT = 'None')
 % OUTPUTS:
 %  M    - structure array with motifs with four members 
 %         (referring to Dale-motif):
@@ -43,8 +42,7 @@ iv = ipv(length(ipNeq) + 1:end);
 
 %% step 2: determine motifs
 % just keep indices of pits that are enclosed with peaks
-if iv(1) < ip(1);iv(1)=[];end
-if iv(end) > ip(end);iv(end)=[];end
+iv = iv(iv > ip(1) & iv < ip(end));
 % enrich structure array M with information for each motif such as pit
 % (iv), low-peak (lp) and high-peak (hp) and the height intersection (ihi)
 nM = length(iv);
@@ -55,12 +53,23 @@ for k = 1:nM
 end
 
 %% step 3: pruning (see pruning cases in readme.md)
-% skip pruning if pruning type (PT) is "None"
-if PT ~= "None"
 % determine attribute-values of each motif
 attr = feature_attribute(z, dx, M, PT);
-% prune aslong minimal attribute value is lower than given threshold
-while min(attr) < TH
+% minimal Q-Value
+Qmin = 3;
+% set default threshold for the case that Qmin is never exceeded
+TH = 100;
+% prune until just two motifs are left
+while nM > 3
+    % parameter Q as a measure for periodicity
+    Q = mean(attr) / std(attr);
+    % if Q is greater than Qmin then overwrite Qmin with the current 
+    % Q-value and TH with minimal attribute value
+    if Q > Qmin
+        TH = min(attr);
+        Qmin = Q;
+    end
+    % Inline prune_min_motif steps
     % row-index of minimal attribute value
     [~, rmin] = min(attr);
     % save motif with minimal attribute-value temporarily, delete 
@@ -81,7 +90,7 @@ while min(attr) < TH
     % determine low-peak and high-peak of motif to update. Update height
     % intersection and attribute-value (see behind if-query)
     if M(rU).ilp == Mmin.ilp
-    [M(rU).ilp, M(rU).ihp] = get_ilp_ihp(z, [M(rU).ihp, Mmin.ihp]);
+        [M(rU).ilp, M(rU).ihp] = get_ilp_ihp(z, [M(rU).ihp, Mmin.ihp]);
     % case 3: low-peak of min-motif is equal the high-peak of motif to
     % update. replace high-peak of motif to merge with high-peak of
     % min-motif
@@ -92,15 +101,15 @@ while min(attr) < TH
         if z(floor(M(rU).ilp)) <= z(floor(Mmin.iv))
             continue
         end
+    end
     % case 3.2: low-peak of motif to merge is higher than pit of
     % min-motif: refresh height intersection and attribute-value
     % (see behind if-query)
-    end
     % update height intersection and attribute-value of motif to update for
     % case 2 and 3.2
     M(rU).ihi = height_intersections(z, M(rU).ilp, M(rU).ihp);
     attr(rU) = feature_attribute(z, dx, M(rU), PT);
-end
+    % End of prune_min_motif steps inlined
 end
 end
 %% height intersection function

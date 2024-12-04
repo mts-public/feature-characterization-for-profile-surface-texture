@@ -33,7 +33,7 @@ PT = str(1);
 N = length(str);
 TH = str2double(str(min(2,N)));     % TH = NaN when no number
 if N == 2 && isnan(TH)
-    TH = "opt";
+    TH = TH_for_optimal_periodicity(z, dx, FT, PT);
 end
 if N >= 3                           % N = 4 if by strrep 2 blanks
     if PT == "Wolfprune"
