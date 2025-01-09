@@ -67,7 +67,7 @@ HDl = (sum(sqrt(1 + (diff(zf)./dx).^2)) ...
 end
 
 function cx = curvature(z, dx, ix)
-ix = ix;
+% ix = ix - 1;
 if mod(ix,1) ~= 0
     ix = [floor(ix) ceil(ix)];
 end
@@ -105,10 +105,10 @@ switch i
         dz2 = (137*z(end-6) + 93*z(end-5) - 285*z(end-4) + 470*z(end-3) ...
             - 255*z(end-2) - 147*z(end-1) + 137*z(end))/(180*(dx)^2);
     otherwise
-        dz1 = (-z(i-2) + 9*z(i-1) - 45*z(i) + 45*z(i+2) - 9*z(i+3) + ...
-            z(i+4))/(60*dx);
-        dz2 = (2*z(i-2) - 27*z(i-1) + 270*z(i) - 490*z(i+1) + 270*z(i+2)...
-            - 27*z(i+3) + 2*z(i+4))/(180*(dx)^2);
+        dz1 = (-z(i-3) + 9*z(i-2) - 45*z(i-1) + 45*z(i+1) - 9*z(i+2) + ...
+            z(i+3))/(60*dx);
+        dz2 = (2*z(i-3) - 27*z(i-2) + 270*z(i-1) - 490*z(i) + 270*z(i+1)...
+            - 27*z(i+2) + 2*z(i+3))/(180*(dx)^2);
 end
 cx(n) = dz2/((1 + dz1^2)^(3/2));
 end

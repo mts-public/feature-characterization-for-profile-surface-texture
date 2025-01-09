@@ -11,6 +11,6 @@ xFC.Rvd = feature_parameter(z, dx, Mv, "All", 1 ,"Count", "Density");
 xFC.Rmpc = feature_parameter(z, dx, Mp, "All", 1 ,"Curvature", "Mean");
 xFC.Rmvc = feature_parameter(z, dx, Mv, "All", 1 ,"Curvature", "Mean");
 xFC.R5p = feature_parameter(z, dx, Mp, "Top", 5,"PVh", "Mean");
-xFC.R5v = feature_parameter(z, dx, Mp, "Bot", 5,"PVh", "Mean");
+xFC.R5v = feature_parameter(z, dx, Mv, "Bot", 5,"PVh", "Mean");
 xFC.R10z = xFC.R5p + xFC.R5v;
 end
