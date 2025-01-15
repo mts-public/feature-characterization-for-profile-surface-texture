@@ -1,7 +1,7 @@
 # Feature Characterization
-The algorithm is based on the definitions in ISO 21920-2.
+This repository contains the companion code for the paper ["Feature Characterization for Profile Surface Texture"](https://iopscience.iop.org/article/10.1088/2051-672X/adaa07).
+The algorithm is based on the definitions in [ISO 21920-2](https://www.iso.org/standard/72226.html).
 
-This repo is the companion code for [Feature Characterization for Profile Surface Texture](https://arxiv.org/abs/2406.06381).
 
 ## Watershed Segmentation
 In the following are some illustrations to show the idea of watershed segmentation. For more information, see the paper.
@@ -24,7 +24,7 @@ The Convention is summarized in the following figure:
 <div align="center">
 <img width="720" src="data/figures_for_readme/FC_Convention.png" />
 </div>
-The functionality can be tested directly using minimal_example.m with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profles for case studies" can be loaded and the algorithm applied by varying the various input arguments.
+The functionality can be tested directly using "minimal_example.m" with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profiles for case studies" can be loaded and the algorithm applied by varying the various input arguments.
 <div align="center">
 <img width="720" src="data/figures_for_readme/GUI.PNG" />
 </div>
