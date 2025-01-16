@@ -32,7 +32,7 @@ def maximum_height(zinput, dx, n_sc=5):
         PF, nPF = zero_crossing(z.reshape(-1,), dx)
         
         # number of values per section
-        l_sc = int(np.floor(len(z) / n_sc) * dx)
+        l_sc = np.floor(len(z) / n_sc) * dx
 
         # Initialize lists for Rpi and Rvi
         Rpi = np.zeros(n_sc)

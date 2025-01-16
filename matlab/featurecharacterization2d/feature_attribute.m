@@ -1,12 +1,12 @@
 function attr = feature_attribute(z, dx, M, AT)
 % INPUTS:
-%   z   - vertical profile values
-%   dx  - step size in x-direction
+%   z   - vertical profile values in µm
+%   dx  - step size in x-direction in mm
 %   M   - motif array
 %   AT  - attribute type {"Wolfprune", "HDh", "Width", "HDw", "VolS",...
 %                         "HDv", "DevLength", "HDl", "PVh", "Curvature",...
 %                         "Count"}
-% Outputs
+% OUTPUTS:
 %   attr - attribute value of given motifs
 
 I_sig = find([M.sig] == 1);
@@ -38,6 +38,7 @@ end
 end
 
 function HDv = HDvf(z, dx, Mr)
+dx = dx*1000; % convert from mm to µm
 ihi = [Mr.ilp; Mr.ihi];
 zlp = z(floor(Mr.ilp));
 A = 0; i=1;
@@ -50,11 +51,11 @@ while i < length(ihi)
     A = A + abs(trapz(xf, zf-zlp));
     i = i + 2;
 end
-HDv = A/(length(z)*dx);
+HDv = A/(length(z)*dx); % in ml/m²
 end
 
 function  HDl = HDlf(z, dx, Mr)
-z = z/1000;
+z = z/1000; % convert from µm to mm
 zlp = z(floor(Mr.ilp));
 dir = sign(Mr.ihp - Mr.ilp);
 ihi_end = Mr.ihi(end);
@@ -63,11 +64,11 @@ i2 = abs(floor(dir*ihi_end));
 zf = [z(i1:dir:i2)];
 HDl = (sum(sqrt(1 + (diff(zf)./dx).^2)) ...
     + mod(Mr.ilp, 1))*dx...
-    + sqrt((ihi_end - i2)^2*dx^2 + (zlp - z(i2))^2);
+    + sqrt((ihi_end - i2)^2*dx^2 + (zlp - z(i2))^2); % in mm
 end
 
 function cx = curvature(z, dx, ix)
-% ix = ix - 1;
+dx = dx*1000; % convert from mm to µm
 if mod(ix,1) ~= 0
     ix = [floor(ix) ceil(ix)];
 end

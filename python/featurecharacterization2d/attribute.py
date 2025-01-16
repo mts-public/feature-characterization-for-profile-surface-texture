@@ -9,9 +9,9 @@ class FeatureAttribute(object):
         Parameters
         ----------
             z : nd.array, float
-                vertical profile values
+                vertical profile values in µm
             dx : float
-                step size in x-direction
+                step size in x-direction in mm
             M : Motif
                 Object containing motifs
             AT : str
@@ -53,6 +53,7 @@ class FeatureAttribute(object):
 
     @staticmethod
     def HDvf(z, dx, Mr):
+        dx = dx*1000 # convert from mm to µm
         # all heightintersections incl. low-peak
         ihi = np.hstack([Mr.ilp, np.array(Mr.ihi[0])])
         zlp = z[Mr.ilp.astype(int)]
@@ -86,7 +87,7 @@ class FeatureAttribute(object):
 
     @staticmethod
     def HDlf(z, dx, Mr):
-        z = z/1000
+        z = z/1000 # convert from µm to mm
         zlp = z[Mr.ilp.astype(int)]
         direction = np.sign(Mr.ihp - Mr.ilp)
         ihi_end = Mr.ihi[-1][-1]
@@ -100,6 +101,7 @@ class FeatureAttribute(object):
 
     @staticmethod
     def curvature(z, dx, ix):
+        dx = dx*1000 # convert from mm to µm
         if np.mod(ix, 1) != 0:
             ix = np.hstack([np.floor(ix), np.ceil(ix)]).astype(int)
         else:

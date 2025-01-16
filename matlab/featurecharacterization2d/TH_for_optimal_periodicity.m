@@ -1,17 +1,11 @@
 function TH = TH_for_optimal_periodicity(z, dx, FT, PT)
 % INPUTS:
-%  z  - vertical profile values
-%  dx - step size in x-direction
-%  FT - feature type: {'D', 'V', 'H', 'P'}
-%  PT - pruning type: {'None', 'Wolfprune', 'Width', 'VolS', 'DevLength'}
+%   z  - vertical profile values
+%   dx - step size in x-direction
+%   FT - feature type: {'D', 'V', 'H', 'P'}
+%   PT - pruning type: {'None', 'Wolfprune', 'Width', 'VolS', 'DevLength'}
 % OUTPUTS:
-%  M    - structure array with motifs with four members 
-%         (referring to Dale-motif):
-%         M.iv    - (interpolated) index of pit
-%         M.ilp   - (interpolated) index of low-peak
-%         M.ihp   - (interpolated) index of high-peak
-%         M.ihi   - (interpolated) index of heightintersection
-%         M.sig   - indicator for significant features
+%   TH - threshold for optimal periodicity
 
 %% step 1: determine indices of all peaks and pits
 % invert z-values if hill-motifs are searched. Allows the rest of the code

@@ -1,5 +1,21 @@
 function [xFC, M, attr] = feature_parameter(z, dx, M,...
                                            Fsig, NIsig, AT, Astats, vstats)
+% INPUTS:
+%   z      - vertical profile values in µm
+%   dx     - step size in x-direction in mm
+%   M      - motif array
+%   Fsig   - significant features {”All”, ”Open”, ”Closed”, ”Top”, ”Bot”}
+%   NIsig  - nesting index for significant features
+%   AT     - attribute type {”HDh”, ”HDw”, ”HDv”, ”HDl”, ”PVh”, 
+%                           ”Curvature”, ”Count”}
+%   Astats - attribute statistics {”Mean”, ”Max”, ”Min”, ”StdDev”, ”Perc”,
+%                                 ”Hist”, ”Sum”, ”Density” }
+%   vstats - required value if Astats = ”Perc”
+% OUTPUTS:
+%   xFC    - feature parameter
+%   M      - motif array with possibly changed significance flags
+%   attr   - attribute values of significant motifs
+
 %% step 4: determine significant_features
 I_Nsig = [];
 nM = length(M);
@@ -63,6 +79,6 @@ switch Astats
     case "Sum"
         xFC = sum(attr);
     case "Density"
-        xFC = sum(attr)/(dx*length(z));
+        xFC = sum(attr)/(dx*length(z)/10); % unit: 1/cm
  end
 end

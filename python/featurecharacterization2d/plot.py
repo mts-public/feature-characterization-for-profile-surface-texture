@@ -19,9 +19,9 @@ def plot_motif(z, dx, M):
     Parameters
     ----------
         z : nd.array, float
-            vertical profile values
+            vertical profile values in µm
         dx : float
-            step size in x-direction
+            step size in x-direction in mm
         M : Motif
             structure for motifs  
     """
@@ -30,6 +30,8 @@ def plot_motif(z, dx, M):
     x = dx * np.arange(z.size)
     # Plots
     plt.plot(x, z, color="black")
+    plt.xlabel("profile length in mm")
+    plt.ylabel("profile height in μm")
 
     for i in range(len(M)):
         iv = M[i].iv

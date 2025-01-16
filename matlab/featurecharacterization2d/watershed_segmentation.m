@@ -1,12 +1,12 @@
 function M = watershed_segmentation(z, dx, FT, PT, TH)
 % INPUTS:
-%  z  - vertical profile values
-%  dx - step size in x-direction
-%  FT - feature type: {'D', 'V', 'H', 'P'}
-%  PT - pruning type: {'None', 'Wolfprune', 'Width', 'VolS', 'DevLength'}
-%  TH - threshold for pruning (not needed if PT = 'None')
+%   z   - vertical profile values in µm
+%   dx  - step size in x-direction in mm
+%   FT  - feature type {'D', 'V', 'H', 'P'}
+%   PT  - pruning type {'None', 'Wolfprune', 'Width', 'VolS', 'DevLength'}
+%   TH  - threshold for pruning (not needed if PT = 'None')
 % OUTPUTS:
-%  M    - structure array with motifs with four members 
+%   M   - structure array with motifs with four members 
 %         (referring to Dale-motif):
 %         M.iv    - (interpolated) index of pit
 %         M.ilp   - (interpolated) index of low-peak

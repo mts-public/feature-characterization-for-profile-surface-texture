@@ -11,9 +11,9 @@ class Watershed(object):
         Parameters
         ----------
             z : nd.array, float
-                vertical profile values
+                vertical profile values in µm
             dx : float
-                step size in x-direction
+                step size in x-direction in mm
             FT : str
                 feature type: {'D', 'V', 'H', 'P'}
             PT : str, optional(default=None)

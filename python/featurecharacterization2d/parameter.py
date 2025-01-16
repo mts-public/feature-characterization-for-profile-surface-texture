@@ -87,6 +87,6 @@ def feature_parameter(
         case "Sum":
             xFC = sum(attr)
         case "Density":
-            xFC = sum(attr) / (dx * len(z))
+            xFC = sum(attr) / (dx * len(z) / 10)
 
     return xFC, M, attr, Fsig, NIsig
