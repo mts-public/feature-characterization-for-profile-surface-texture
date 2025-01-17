@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/763592386.svg)](https://doi.org/10.5281/zenodo.14676921)
+
 # Feature Characterization
 This repository contains the companion code for the paper ["Feature Characterization for Profile Surface Texture"](https://iopscience.iop.org/article/10.1088/2051-672X/adaa07).
 The algorithm is based on the definitions in [ISO 21920-2](https://www.iso.org/standard/72226.html).
