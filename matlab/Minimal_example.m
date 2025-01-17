@@ -9,8 +9,7 @@ z = (z-mean(z))';
 % load("..\data\profiles\Bu_1_56_ak.mat")
 
 %% feature characterization
-dx = 0.5;
-TH = TH_for_optimal_periodicity(z, dx, "D", "Width");
-
-[xFC, M, META] = feature_characterization(z, dx, "D", "None", "All", "Curvature", "Mean");
+dx = 0.5e-3;
+[xFC, M, META] = feature_characterization(z, dx, "D", "Wolfprune 5 %", ...
+    "Closed 10 %", "HDh", "Mean");
 plot_motifs(z, dx, M, META.Fsig, META.NIsig);
