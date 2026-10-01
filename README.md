@@ -58,4 +58,4 @@ pip install .[extra]
 ```
 
 ##### Version
-- python>=3.11
+- python>=3.10
