@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def interpolation(arr, idx_interpolated):
@@ -47,6 +46,8 @@ def plot_motifs(z, dx, M, Fsig="All", NIsig=None):
         NIsig : float, optional
                 nesting index for significant features
     """
+    import matplotlib.pyplot as plt
+
     if NIsig is None:
         NIsig = np.array([])
 
