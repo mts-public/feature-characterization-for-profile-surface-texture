@@ -97,7 +97,7 @@ class FeatureAttribute(object):
         HDl = (
             sum(np.sqrt(1.0 + (np.diff(zf.flatten()) / dx) ** 2)) + np.mod(Mr.ilp, 1)
         ) * dx + np.sqrt((ihi_end - i2) ** 2 * dx**2 + (zlp - z[i2]) ** 2)
-        return HDl
+        return HDl.item()
 
     @staticmethod
     def curvature(z, dx, ix):
