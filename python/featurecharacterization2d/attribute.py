@@ -80,7 +80,7 @@ class FeatureAttribute(object):
                     zlp,
                 ]
             )
-            A = A + np.abs(np.trapz(xf, zf - zlp))
+            A = A + np.abs(np.trapezoid(xf, zf - zlp))
             i = i + 2
         HDv = A / (len(z) * dx)
         return HDv
