@@ -52,10 +52,10 @@ cd python
 pip install .
 ```
 
-Additional dependencies for development and plotting (`scipy`, `matplotlib`, `jupyter notebook`) are installed by
+`numpy`, `scipy` and `matplotlib` are installed automatically. The additional dependency for the case studies (`jupyter notebook`) is installed by
 ```bash
 pip install .[extra]
 ```
 
 ##### Version
-- python>=3.11
+- python>=3.10

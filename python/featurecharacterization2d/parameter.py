@@ -48,7 +48,7 @@ def feature_parameter(
             # determine attribute values
             attr = FeatureAttribute.compute(z, dx, M, "PVh")
             # determine indices (I) of sorted zv-values in zv
-            I_sort = np.argsort(-attr)
+            I_sort = np.argsort(-attr, kind="stable")
             # case NIsig is higher than nM use nM
             NIsig = np.amin([NIsig, nM])
             I_Nsig = I_sort[int(NIsig + 0.5) :]

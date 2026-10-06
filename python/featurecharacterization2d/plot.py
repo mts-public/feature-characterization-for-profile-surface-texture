@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def interpolation(arr, idx_interpolated):
@@ -47,6 +46,8 @@ def plot_motifs(z, dx, M, Fsig="All", NIsig=None):
         NIsig : float, optional
                 nesting index for significant features
     """
+    import matplotlib.pyplot as plt
+
     if NIsig is None:
         NIsig = np.array([])
 
@@ -80,7 +81,7 @@ def plot_motifs(z, dx, M, Fsig="All", NIsig=None):
         ilp, iv, ihp = motif.ilp, motif.iv, motif.ihp
         xvals = [(ilp) * dx, (ilp) * dx, (ihp) * dx, (ihp) * dx]
         zvals = [interpolation(z, ilp), interpolation(z, iv), interpolation(z, iv), interpolation(z, ihp)]
-        ax.plot(xvals, zvals, color="red", linestyle=frame_line_style[int(motif.sig != 1)],linewidth=0.5)
+        ax.plot(xvals, zvals, color="red", linestyle=frame_line_style[int(motif.sig.item() != 1)],linewidth=0.5)
 
 
     # Threshold for Fsig = "Open" or "Closed"

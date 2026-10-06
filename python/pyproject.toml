@@ -1,29 +1,54 @@
 [build-system]
 requires = [
-    "setuptools>=68.0.0",
-    "wheel"
+    "setuptools>=77.0.0",
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "featurecharacterization2d"
-version = "1.1.0"
-requires-python = ">=3.11"
-license = {text = "MIT"}
+version = "1.1.2"
+description = "Feature Characterization for Profile Surface Texture"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    {name = "Alexander Müller"},
+]
+keywords = ["surface texture", "roughness", "profile", "ISO 21920-2", "feature characterization", "watershed segmentation"]
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
 ]
 dependencies = [
-    'importlib-metadata; python_version<"3.8"',
-    'numpy>=1.26.0',
-    'matplotlib>=3.8.0',
+    'numpy>=2.0.0',
+    'scipy>=1.13.0',
+    'matplotlib>=3.9.0',
 ]
 
 [project.optional-dependencies]
 extra = [
     'notebook>=7.1.1',
-    'scipy>=1.12.0',
 ]
 
+[project.urls]
+Repository = "https://github.com/mts-public/feature-characterization-for-profile-surface-texture"
+Issues = "https://github.com/mts-public/feature-characterization-for-profile-surface-texture/issues"
+Paper = "https://doi.org/10.1088/2051-672X/adaa07"
+
+[project.readme]
+content-type = "text/markdown"
+text = '''
+Feature characterization for profile surface texture based on ISO 21920-2, companion code for the paper
+["Feature Characterization for Profile Surface Texture"](https://doi.org/10.1088/2051-672X/adaa07).
+Documentation and examples: [GitHub repository](https://github.com/mts-public/feature-characterization-for-profile-surface-texture).
+'''
+
 [tool.setuptools.packages.find]
-exclude = ["tests*"]
+include = ["featurecharacterization2d*"]
