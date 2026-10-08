@@ -168,8 +168,8 @@ class Watershed(object):
         Qmin = 3
         # set default threshold for the case that Qmin is never exceeded
         TH = 100
-        # prune until just two motifs are left
-        while nM > 2:
+        # prune until just three motifs are left
+        while nM > 3:
             # parameter Q as a measure for periodicity
             Q = np.mean(ATTR) / np.std(ATTR, ddof=1)
             # if Q is greater than Qmin then overwrite Qmin with the current

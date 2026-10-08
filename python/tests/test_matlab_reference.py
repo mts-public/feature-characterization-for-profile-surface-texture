@@ -44,12 +44,7 @@ FC_REFERENCE = read_reference("matlab_reference_fc.csv")
 RZ_RCM_REFERENCE = read_reference("matlab_reference_rz_rcm.csv")
 
 # Known deviations from MATLAB, kept visible as expected failures
-KNOWN_DEVIATIONS = {
-    ("Luftpresser_1_56_ak", "Wolfprune opt"): (
-        "optimal periodicity: MATLAB TH_for_optimal_periodicity stops at nM > 3, "
-        "Python Watershed.optimal_periodicity at nM > 2"
-    ),
-}
+KNOWN_DEVIATIONS = {}
 
 
 def fc_param(ref):
