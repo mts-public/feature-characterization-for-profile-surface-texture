@@ -49,6 +49,8 @@ class FeatureAttribute(object):
                     ATTR[i] = cls.curvature(z, dx, M[I_sig[i]].iv)
             case "Count":
                 ATTR = np.ones(I_sig.size)
+            case _:
+                raise ValueError(f"Unknown attribute type '{AT}'.")
         return ATTR
 
     @staticmethod
@@ -161,11 +163,11 @@ class FeatureAttribute(object):
                 ) / (60.0 * dx)
                 dz2 = (
                     - 13.0 * z[0]
-                    + 288.0 * z[1]
+                    + 228.0 * z[1]
                     - 420.0 * z[2]
                     + 200.0 * z[3]
                     + 15.0 * z[4]
-                    + 12.0 * z[5]
+                    - 12.0 * z[5]
                     + 2.0 * z[6]
                 ) / (180.0 * (dx) ** 2)
             elif i == N - 3:

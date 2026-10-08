@@ -76,6 +76,9 @@ class Watershed(object):
 
         # step 2: determine motifs
 
+        # a motif requires at least two peaks enclosing a pit
+        if ip.size < 2:
+            return Motif()
         # just keep indices of pits that are enclosed with peaks
         iv = iv[(iv > ip[0]) & (iv < ip[-1])]
         # enrich structure array M with information for each motif such as pit
@@ -99,7 +102,8 @@ class Watershed(object):
                     z, self.dx, deepcopy(M), nM, ATTR, self.PT
                 )
             # prune aslong minimal attribute value is lower than given threshold
-            while min(ATTR) < self.TH:
+            # (stop if all motifs are pruned)
+            while ATTR.size > 0 and np.min(ATTR) < self.TH:
                 M, nM, ATTR = self.prune_min_motif(z, self.dx, M, nM, ATTR, self.PT)
         return M
 

@@ -88,5 +88,7 @@ def feature_parameter(
             xFC = sum(attr)
         case "Density":
             xFC = sum(attr) / (dx * len(z) / 10)
+        case _:
+            raise ValueError(f"Unknown attribute statistic '{Astats}'.")
 
     return xFC, M, attr, Fsig, NIsig
