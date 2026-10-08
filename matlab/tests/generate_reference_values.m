@@ -30,6 +30,7 @@ configs = [
     "D", "Wolfprune 5 %",  "Open 0",      "HDh",       "Mean"
     "H", "Wolfprune 5 %",  "Open 0",      "HDh",       "Mean"
     "D", "Wolfprune 5 %",  "Closed 50 %", "HDh",       "Mean"
+    "D", "Wolfprune 5 %",  "Closed 0 %",  "HDh",       "Mean"
     "H", "Wolfprune 5 %",  "Closed 50 %", "HDv",       "Mean"
     "D", "Wolfprune 5 %",  "All",         "HDv",       "Sum"
     "D", "Wolfprune 5 %",  "All",         "HDl",       "Max"

@@ -13,6 +13,7 @@ Bu_1_56_ak,V,Wolfprune 5 %,Bot 5,PVh,Mean,10.249338031506996,80
 Bu_1_56_ak,D,Wolfprune 5 %,Open 0,HDh,Mean,3.3068987523526543,80
 Bu_1_56_ak,H,Wolfprune 5 %,Open 0,HDh,Mean,5.0639001720267371,81
 Bu_1_56_ak,D,Wolfprune 5 %,Closed 50 %,HDh,Mean,3.6711724909454686,80
+Bu_1_56_ak,D,Wolfprune 5 %,Closed 0 %,HDh,Mean,NaN,80
 Bu_1_56_ak,H,Wolfprune 5 %,Closed 50 %,HDv,Mean,0.11830877044275737,81
 Bu_1_56_ak,D,Wolfprune 5 %,All,HDv,Sum,0.91630321152320626,80
 Bu_1_56_ak,D,Wolfprune 5 %,All,HDl,Max,0.047672507672656773,80
@@ -36,6 +37,7 @@ Luftpresser_1_56_ak,V,Wolfprune 5 %,Bot 5,PVh,Mean,2.2724980362753247,213
 Luftpresser_1_56_ak,D,Wolfprune 5 %,Open 0,HDh,Mean,0.58237647013799443,213
 Luftpresser_1_56_ak,H,Wolfprune 5 %,Open 0,HDh,Mean,0.20929631729771808,213
 Luftpresser_1_56_ak,D,Wolfprune 5 %,Closed 50 %,HDh,Mean,0.43674098381762017,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,Closed 0 %,HDh,Mean,NaN,213
 Luftpresser_1_56_ak,H,Wolfprune 5 %,Closed 50 %,HDv,Mean,0.0010771369195710914,213
 Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDv,Sum,0.18222838023838253,213
 Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDl,Max,0.064587871003217029,213

@@ -83,8 +83,7 @@ def test_maximum_height(ref):
 
 @pytest.mark.parametrize(
     "ref",
-    # p = 0 % is excluded: MATLAB Rcm.p returns NaN, Python returns Rcm = 0
-    [r for r in RZ_RCM_REFERENCE if r["quantity"] == "Rcm" and float(r["p"]) > 0],
+    [r for r in RZ_RCM_REFERENCE if r["quantity"] == "Rcm"],
     ids=lambda r: f"{r['profile']}|p={r['p']}",
 )
 def test_inverse_material_ratio(ref):
