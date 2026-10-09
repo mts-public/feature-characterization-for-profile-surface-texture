@@ -4,10 +4,13 @@
 % Outputs:
 %   python/tests/data/matlab_reference_fc.csv     - feature characterization
 %   python/tests/data/matlab_reference_rz_rcm.csv - Rz and Rcm
+%   python/tests/data/matlab_reference_default.csv - default_FC_parameters
+%   python/tests/data/matlab_reference_smd.csv     - smd2mat
 clear; warning('off', 'all');
 
 root = fileparts(fileparts(fileparts(mfilename('fullpath'))));
 addpath(fullfile(root, 'matlab', 'featurecharacterization2d'));
+addpath(fullfile(root, 'matlab', 'softgauge'));
 outdir = fullfile(root, 'python', 'tests', 'data');
 if ~exist(outdir, 'dir'), mkdir(outdir); end
 
@@ -67,5 +70,30 @@ for p = profiles
     for mr = [0 10 50 90 100 [1 floor(n/2) n-1]/n*100]
         fprintf(fid, '%s,Rcm,%.17g,%.17g\n', p, mr, Rcm(z, mr));
     end
+end
+fclose(fid);
+
+% named feature parameters with default settings (ISO 21920-2/-3)
+names = ["Rpd", "Rvd", "Rmpc", "Rmvc", "R5p", "R5v", "R10z"];
+fid = fopen(fullfile(outdir, 'matlab_reference_default.csv'), 'w');
+fprintf(fid, 'profile,parameter,value\n');
+for p = profiles
+    S = load(fullfile(root, 'data', 'profiles', p + ".mat"));
+    z = S.z - mean(S.z);
+    xFC = default_FC_parameters(z, dx);
+    for name = names
+        fprintf(fid, '%s,%s,%.17g\n', p, name, xFC.(name));
+    end
+end
+fclose(fid);
+
+% reading of softgauge files (*.smd)
+files = dir(fullfile(root, 'data', 'profiles', '*.smd'));
+fid = fopen(fullfile(outdir, 'matlab_reference_smd.csv'), 'w');
+fprintf(fid, 'file,n,dx,L,x_end,z_first,z_last,z_sum\n');
+for k = 1:numel(files)
+    [z, L, x, dxs] = smd2mat(fullfile(files(k).folder, files(k).name));
+    fprintf(fid, '%s,%d,%.17g,%.17g,%.17g,%.17g,%.17g,%.17g\n', files(k).name, ...
+        numel(z), dxs, L, x(end), z(1), z(end), sum(z));
 end
 fclose(fid);

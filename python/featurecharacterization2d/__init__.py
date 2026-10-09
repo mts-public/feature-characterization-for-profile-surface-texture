@@ -7,6 +7,8 @@ from .parameter import feature_parameter
 from .plot import plot_motifs
 from .Rz import maximum_height
 from .Rcm import inverse_material_ratio
+from .default_parameters import default_fc_parameters
+from .smd import read_smd
 
 
 
@@ -18,4 +20,6 @@ __all__ = [
     "plot_motifs",
     "inverse_material_ratio",
     "maximum_height",
+    "default_fc_parameters",
+    "read_smd",
 ]
