@@ -26,7 +26,7 @@ The Convention is summarized in the following figure:
 <div align="center">
 <img width="720" src="data/figures_for_readme/FC_Convention.png" />
 </div>
-The functionality can be tested directly using "minimal_example.m" with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profiles" can be loaded and the algorithm applied by varying the various input arguments.
+The functionality can be tested directly using "minimal_example.m" with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI (`matlab/GUI/GUI.m`, run `GUI` in MATLAB or install the standalone version with `matlab/GUI/GUI_installer.exe`) where, for example, the profiles from "data/profiles" (`*.smd` or `*.mat`) can be loaded and the algorithm applied by varying the various input arguments. The GUI uses the functions of the toolbox. The installer is built with `matlab/GUI/build_gui.m`.
 <div align="center">
 <img width="720" src="data/figures_for_readme/GUI.PNG" />
 </div>
