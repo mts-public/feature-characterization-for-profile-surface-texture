@@ -62,8 +62,10 @@ for p = profiles
     S = load(fullfile(root, 'data', 'profiles', p + ".mat"));
     z = S.z - mean(S.z);
     fprintf(fid, '%s,Rz,,%.17g\n', p, Rz(z, dx));
-    for mr = [0 10 50 90 100]
-        fprintf(fid, '%s,Rcm,%g,%.17g\n', p, mr, Rcm(z, mr));
+    n = length(z);
+    % incl. material ratios exactly at sampling points k/n (k = 1, n/2, n-1)
+    for mr = [0 10 50 90 100 [1 floor(n/2) n-1]/n*100]
+        fprintf(fid, '%s,Rcm,%.17g,%.17g\n', p, mr, Rcm(z, mr));
     end
 end
 fclose(fid);
