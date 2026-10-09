@@ -53,7 +53,7 @@ attr = feature_attribute(z, dx, M, PT);
 Qmin = 3;
 % set default threshold for the case that Qmin is never exceeded
 TH = 100;
-% prune until just two motifs are left
+% prune until just three motifs are left
 while nM > 3
     % parameter Q as a measure for periodicity
     Q = mean(attr) / std(attr);

@@ -26,10 +26,19 @@ The Convention is summarized in the following figure:
 <div align="center">
 <img width="720" src="data/figures_for_readme/FC_Convention.png" />
 </div>
-The functionality can be tested directly using "minimal_example.m" with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI for Matlab "GUI.mlapp" where, for example, the profiles from "data/profiles for case studies" can be loaded and the algorithm applied by varying the various input arguments.
+The functionality can be tested directly using "minimal_example.m" with or "minimal_example.py" an editable dummy profile. Alternatively, there is a GUI (`matlab/GUI/GUI.m`, run `GUI` in MATLAB or install the standalone version with `matlab/GUI/GUI_installer.exe`) where, for example, the profiles from "data/profiles" (`*.smd` or `*.mat`) can be loaded and the algorithm applied by varying the various input arguments. The GUI uses the functions of the toolbox. The installer is built with `matlab/GUI/build_gui.m`.
 <div align="center">
 <img width="720" src="data/figures_for_readme/GUI.PNG" />
 </div>
+
+### Softgauge files and default parameters
+Profiles in the softgauge format of ISO 5436-2 (`*.smd`) are read with `smd2mat` (MATLAB, folder "softgauge") or `read_smd` (Python). Both return the profile values in µm and the step size `dx` in mm as given in the file. Use this `dx` instead of an assumed nominal value. The named feature parameters of ISO 21920-2 (Rpd, Rvd, Rmpc, Rmvc, R5p, R5v, R10z) with the default settings according to ISO 21920-3 are calculated by `default_FC_parameters` (MATLAB) or `default_fc_parameters` (Python):
+```python
+from featurecharacterization2d import read_smd, default_fc_parameters
+
+z, L, x, dx = read_smd("data/profiles/Bu_1_56_ak.smd")
+xFC = default_fc_parameters(z - z.mean(), dx)
+```
 
 ## Preliminaries MATLAB
 Add "featurecharacterization2d"-folder to search path of Matlab
@@ -45,8 +54,11 @@ save path
 
 ## Preliminaries Python
 
-Install `featurecharacterization2d` package.
-
+Install `featurecharacterization2d` package from PyPI
+```bash
+pip install featurecharacterization2d
+```
+or from this repository
 ```bash
 cd python
 pip install .

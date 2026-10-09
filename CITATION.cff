@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below and the software version you used."
+type: software
+title: "Feature Characterization for Profile Surface Texture"
+version: 1.2.0
+license: MIT
+repository-code: "https://github.com/mts-public/feature-characterization-for-profile-surface-texture"
+doi: 10.5281/zenodo.14676921
+keywords:
+  - surface texture
+  - roughness
+  - profile
+  - ISO 21920-2
+  - feature characterization
+  - watershed segmentation
+authors:
+  - family-names: Müller
+    given-names: Alexander
+    orcid: "https://orcid.org/0009-0004-5099-6296"
+  - family-names: Jawaid
+    given-names: Arsalan
+    orcid: "https://orcid.org/0000-0001-9951-4164"
+preferred-citation:
+  type: article
+  title: "Feature characterization for profile surface texture"
+  journal: "Surface Topography: Metrology and Properties"
+  volume: 13
+  issue: 1
+  year: 2025
+  doi: 10.1088/2051-672X/adaa07
+  authors:
+    - family-names: Müller
+      given-names: A.
+      orcid: "https://orcid.org/0009-0004-5099-6296"
+    - family-names: Eifler
+      given-names: M.
+      orcid: "https://orcid.org/0000-0001-6628-7284"
+    - family-names: Jawaid
+      given-names: A.
+      orcid: "https://orcid.org/0000-0001-9951-4164"
+    - family-names: Seewig
+      given-names: J.
+      orcid: "https://orcid.org/0000-0002-1420-1597"

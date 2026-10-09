@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "featurecharacterization2d"
-version = "1.1.2"
+version = "1.2.0"
 description = "Feature Characterization for Profile Surface Texture"
 requires-python = ">=3.10"
 license = "MIT"
@@ -35,6 +35,9 @@ dependencies = [
 [project.optional-dependencies]
 extra = [
     'notebook>=7.1.1',
+]
+test = [
+    'pytest>=8.0',
 ]
 
 [project.urls]

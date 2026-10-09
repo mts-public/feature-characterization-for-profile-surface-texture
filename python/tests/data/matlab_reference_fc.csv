@@ -1,0 +1,49 @@
+profile,FT,pruning,significant,AT,stats,xFC,nM
+Bu_1_56_ak,D,None,All,HDh,Mean,0.55191348402691653,439
+Bu_1_56_ak,D,Wolfprune 3,All,HDh,Mean,4.3123657745652562,44
+Bu_1_56_ak,D,VolS 1,All,HDh,Mean,27.938628855042236,8
+Bu_1_56_ak,D,Width 0.05,All,HDh,Mean,26.461823860088234,21
+Bu_1_56_ak,D,DevLength 0.05,All,HDh,Mean,27.519549401462786,21
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDh,Mean,3.0844999820259611,80
+Bu_1_56_ak,D,Width 5 %,All,HDw,Mean,0.47368896288654228,8
+Bu_1_56_ak,D,Wolfprune opt,All,HDh,Mean,28.163463835417804,5
+Bu_1_56_ak,D,Wolfprune 1000,All,HDh,Mean,NaN,0
+Bu_1_56_ak,P,Wolfprune 5 %,Top 5,PVh,Mean,19.319404838632813,81
+Bu_1_56_ak,V,Wolfprune 5 %,Bot 5,PVh,Mean,10.249338031506996,80
+Bu_1_56_ak,D,Wolfprune 5 %,Open 0,HDh,Mean,3.3068987523526543,80
+Bu_1_56_ak,H,Wolfprune 5 %,Open 0,HDh,Mean,5.0639001720267371,81
+Bu_1_56_ak,D,Wolfprune 5 %,Closed 50 %,HDh,Mean,3.6711724909454686,80
+Bu_1_56_ak,D,Wolfprune 5 %,Closed 0 %,HDh,Mean,NaN,80
+Bu_1_56_ak,H,Wolfprune 5 %,Closed 50 %,HDv,Mean,0.11830877044275737,81
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDv,Sum,0.91630321152320626,80
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDl,Max,0.047672507672656773,80
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDw,Min,0.0098279210493351452,80
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDh,StdDev,0.95586498766696859,80
+Bu_1_56_ak,D,Wolfprune 5 %,All,HDh,Perc 2,0.83750000000000002,80
+Bu_1_56_ak,V,Wolfprune 5 %,All,Curvature,Mean,0.71352178733583516,80
+Bu_1_56_ak,P,Wolfprune 5 %,All,Curvature,Mean,-0.31772788999295759,81
+Bu_1_56_ak,P,Wolfprune 5 %,All,Count,Density,202.47469066366705,81
+Luftpresser_1_56_ak,D,None,All,HDh,Mean,0.080031961831316889,1164
+Luftpresser_1_56_ak,D,Wolfprune 3,All,HDh,Mean,3.3479652290650419,2
+Luftpresser_1_56_ak,D,VolS 1,All,HDh,Mean,NaN,0
+Luftpresser_1_56_ak,D,Width 0.05,All,HDh,Mean,1.1300779221304003,47
+Luftpresser_1_56_ak,D,DevLength 0.05,All,HDh,Mean,1.1294993249758924,47
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDh,Mean,0.49226942815778441,213
+Luftpresser_1_56_ak,D,Width 5 %,All,HDw,Mean,0.42139508030685641,9
+Luftpresser_1_56_ak,D,Wolfprune opt,All,HDh,Mean,2.2551974816709981,13
+Luftpresser_1_56_ak,D,Wolfprune 1000,All,HDh,Mean,NaN,0
+Luftpresser_1_56_ak,P,Wolfprune 5 %,Top 5,PVh,Mean,0.59666812702904803,213
+Luftpresser_1_56_ak,V,Wolfprune 5 %,Bot 5,PVh,Mean,2.2724980362753247,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,Open 0,HDh,Mean,0.58237647013799443,213
+Luftpresser_1_56_ak,H,Wolfprune 5 %,Open 0,HDh,Mean,0.20929631729771808,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,Closed 50 %,HDh,Mean,0.43674098381762017,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,Closed 0 %,HDh,Mean,NaN,213
+Luftpresser_1_56_ak,H,Wolfprune 5 %,Closed 50 %,HDv,Mean,0.0010771369195710914,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDv,Sum,0.18222838023838253,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDl,Max,0.064587871003217029,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDw,Min,0.0016621788750662745,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDh,StdDev,0.506753912033855,213
+Luftpresser_1_56_ak,D,Wolfprune 5 %,All,HDh,Perc 2,0.023474178403755867,213
+Luftpresser_1_56_ak,V,Wolfprune 5 %,All,Curvature,Mean,0.37577435848151908,213
+Luftpresser_1_56_ak,P,Wolfprune 5 %,All,Curvature,Mean,-0.20858842528904889,213
+Luftpresser_1_56_ak,P,Wolfprune 5 %,All,Count,Density,532.43344581927261,213

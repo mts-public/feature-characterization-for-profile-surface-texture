@@ -17,15 +17,17 @@ def patch_featureelement(z, x, dx, M, col):
     Creates patch elements (shaded areas) for motifs.
     """
     dir = np.sign(M.ihp - M.ilp)[0].astype(int)
-    ihi = np.array([M.ilp] + M.ihi)
+    # all height intersections incl. low-peak (number of intersections varies)
+    ihi = np.hstack([M.ilp, np.asarray(M.ihi[0], dtype=float)])
     zlp = interpolation(z, M.ilp)
 
     patches = []
     for i in range(0, len(ihi) - 1, 2):
-        i1 = np.abs(np.ceil(dir * ihi[i])[0].astype(int))
-        i2 = np.abs(np.floor(dir * ihi[i + 1])[0].astype(int))
-        xf = np.hstack([(ihi[i]) * dx, x[i1:i2 + 1 * dir:dir], (ihi[i + 1]) * dx])
-        zf = np.hstack([zlp, z[i1:i2 + 1 * dir:dir], zlp])
+        i1 = int(np.abs(np.ceil(dir * ihi[i])))
+        i2 = int(np.abs(np.floor(dir * ihi[i + 1])))
+        idx = np.arange(i1, i2 + dir, dir)
+        xf = np.hstack([ihi[i] * dx, x[idx], ihi[i + 1] * dx])
+        zf = np.hstack([zlp, z[idx], zlp])
 
         patches.append((xf, zf, col))
 
@@ -47,9 +49,6 @@ def plot_motifs(z, dx, M, Fsig="All", NIsig=None):
                 nesting index for significant features
     """
     import matplotlib.pyplot as plt
-
-    if NIsig is None:
-        NIsig = np.array([])
 
     if len(M) == 0:
         raise ValueError("No features detected. Check pruning configuration.")
@@ -85,7 +84,7 @@ def plot_motifs(z, dx, M, Fsig="All", NIsig=None):
 
 
     # Threshold for Fsig = "Open" or "Closed"
-    if Fsig in ["Open", "Closed"] and NIsig.size > 0:
+    if Fsig in ["Open", "Closed"] and NIsig is not None and np.isfinite(NIsig):
         ax.axhline(NIsig, linestyle="--", linewidth=1, color="black")
 
     # Plot settings
