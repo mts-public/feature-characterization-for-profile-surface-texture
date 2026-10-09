@@ -112,12 +112,16 @@ def test_pruning_removes_all_motifs():
 
 def test_unknown_statistic_raises():
     with pytest.raises(ValueError, match="Unknown attribute statistic"):
-        feature_characterization(Z_MINIMAL, DX, "D", "Wolfprune 1", "All", "HDh", "Median")
+        feature_characterization(
+            Z_MINIMAL, DX, "D", "Wolfprune 1", "All", "HDh", "Median"
+        )
 
 
 def test_unknown_attribute_raises():
     with pytest.raises(ValueError, match="Unknown attribute type"):
-        feature_characterization(Z_MINIMAL, DX, "D", "Wolfprune 1", "All", "Foo", "Mean")
+        feature_characterization(
+            Z_MINIMAL, DX, "D", "Wolfprune 1", "All", "Foo", "Mean"
+        )
 
 
 # material ratio ------------------------------------------------------------
